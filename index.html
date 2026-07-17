@@ -129,6 +129,9 @@
             background: #000;
         }
         
+        /* ============================================================
+           CONTINUE BUTTON - VIBRANT EFFECT
+           ============================================================ */
         .splash-continue-btn {
             position: absolute;
             bottom: 60px;
@@ -143,32 +146,70 @@
             font-weight: 700;
             letter-spacing: 2px;
             cursor: pointer;
-            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
             z-index: 100000;
             opacity: 0;
             visibility: hidden;
-            animation: fadeInUp 0.6s ease forwards;
-            animation-delay: 2.2s;
+            animation: fadeInUp 0.6s ease forwards, pulseGlow 2s ease-in-out infinite;
+            animation-delay: 2.2s, 2.8s;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
+
+        /* Pulse + Glow Animation */
+        @keyframes pulseGlow {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 0 50px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.3);
+            }
+        }
+
+        /* Shimmer Effect */
+        .splash-continue-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 60%
+            );
+            animation: shimmer 3s ease-in-out infinite;
+            transform: rotate(25deg);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) rotate(25deg); }
+            100% { transform: translateX(100%) rotate(25deg); }
+        }
+
         .splash-continue-btn.show {
             opacity: 1;
             visibility: visible;
         }
         .splash-continue-btn:hover {
-            transform: translateX(-50%) scale(1.05);
-            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+            transform: translateX(-50%) scale(1.08);
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
         }
         .splash-continue-btn:active {
             transform: translateX(-50%) scale(0.95);
         }
+
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
             100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         /* ============================================================
-           MAIN CARD (Less Glassmorphism - bg01.webp visible)
+           MAIN CARD (blur: 4px - bg01.webp visible)
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -181,7 +222,6 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.3s ease;
             
-            /* ===== BG01.WEBP AS BACKGROUND ===== */
             background-image: url('bg01.webp');
             background-size: cover;
             background-position: center;
@@ -189,7 +229,7 @@
             background-color: rgba(255, 248, 235, 0.3);
         }
 
-        /* Less blur - more visible bg01.webp */
+        /* Glassmorphism with blur: 4px */
         .onam-card::before {
             content: '';
             position: absolute;
@@ -198,13 +238,12 @@
             right: 0;
             bottom: 0;
             border-radius: 48px 48px 32px 32px;
-            background: rgba(255, 255, 255, 0.35);  /* 0.15 → 0.35 */
-            backdrop-filter: blur(8px);  /* 20px → 8px */
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             z-index: 0;
             pointer-events: none;
         }
-        /* All content inside card should be above the overlay */
         .onam-card > * {
             position: relative;
             z-index: 1;
