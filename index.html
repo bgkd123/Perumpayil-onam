@@ -168,7 +168,7 @@
         }
 
         /* ============================================================
-           MAIN CARD WITH BG01.WEBP BACKGROUND
+           MAIN CARD (Less Glassmorphism - bg01.webp visible)
            ============================================================ */
         .onam-card {
             max-width:440px; 
@@ -177,7 +177,7 @@
             z-index:20;
             border-radius:48px 48px 32px 32px;
             padding:24px 20px 32px; 
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.3s ease;
             
@@ -186,10 +186,10 @@
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
-            background-color: rgba(255, 248, 235, 0.4);
+            background-color: rgba(255, 248, 235, 0.3);
         }
 
-        /* Glassmorphism overlay on top of image */
+        /* Less blur - more visible bg01.webp */
         .onam-card::before {
             content: '';
             position: absolute;
@@ -198,9 +198,9 @@
             right: 0;
             bottom: 0;
             border-radius: 48px 48px 32px 32px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.35);  /* 0.15 → 0.35 */
+            backdrop-filter: blur(8px);  /* 20px → 8px */
+            -webkit-backdrop-filter: blur(8px);
             z-index: 0;
             pointer-events: none;
         }
@@ -208,6 +208,59 @@
         .onam-card > * {
             position: relative;
             z-index: 1;
+        }
+
+        /* ===== HEADER - Big Logo on Top, then PERUMPAYIL ===== */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+        .header-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.5);
+            object-fit: cover;
+            background: #fff8ec;
+            flex-shrink: 0;
+        }
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .brand {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #4a2a0e;
+            line-height: 1.1;
+            text-shadow: 2px 2px 0 rgba(255, 215, 0, 0.3);
+        }
+        .brand small {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #a55d2a;
+            letter-spacing: 2px;
+            margin-left: 6px;
+        }
+        .subhead {
+            font-size: 0.9rem;
+            color: #5a3d1e;
+            background: rgba(255, 255, 255, 0.4);
+            display: inline-block;
+            padding: 0 14px 0 10px;
+            border-radius: 40px;
+            margin-top: 2px;
+            width: fit-content;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(4px);
         }
 
         .onam-tag {
@@ -311,26 +364,6 @@
             padding:2px 8px;
             border-radius:20px;
             font-size:0.8rem;
-        }
-
-        .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:10px; }
-        .title-group { display:flex; flex-direction:column; }
-        .brand { font-size:1.9rem; font-weight:700; letter-spacing:1px; color:#4a2a0e; line-height:1.1; text-shadow:2px 2px 0 rgba(255,215,0,0.3); }
-        .brand small { font-size:1rem; font-weight:500; color:#a55d2a; letter-spacing:2px; margin-left:6px; }
-        .subhead {
-            font-size:0.9rem; color:#5a3d1e; background:rgba(255,255,255,0.3); display:inline-block; padding:0 14px 0 10px;
-            border-radius:40px; margin-top:2px; width:fit-content; border:1px solid rgba(255,215,0,0.3);
-            backdrop-filter:blur(4px);
-        }
-        .header-logo {
-            width:100px;
-            height:100px;
-            border-radius:50%;
-            border:3px solid #ffd700;
-            box-shadow:0 4px 30px rgba(255,215,0,0.4);
-            object-fit:cover;
-            background:#fff8ec;
-            flex-shrink:0;
         }
 
         .meat-icons {
@@ -527,12 +560,12 @@
         /* ===== INFO GRID ===== */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
-            background:rgba(255,255,255,0.2); backdrop-filter:blur(8px); padding:12px 16px; border-radius:60px;
+            background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
             display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
             box-shadow:0 4px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
         }
-        .info-item:hover { background:rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .info-item:hover { background:rgba(255,255,255,0.4); transform: translateY(-2px); }
         .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
         .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
         .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
@@ -547,7 +580,7 @@
         .info-item .action-link.whatsapp:hover { background:#2aa85c; }
 
         .order-section {
-            background:rgba(255,215,0,0.1); backdrop-filter:blur(8px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
+            background:rgba(255,215,0,0.15); backdrop-filter:blur(4px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
             margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
         }
         .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
@@ -593,7 +626,7 @@
 
         @media (max-width:420px) {
             .brand { font-size:1.6rem; }
-            .header-logo { width:80px; height:80px; }
+            .header-logo { width:90px; height:90px; }
             .maveli-float-img { width:90px; }
             .maveli-fallback { font-size:3.5rem; }
             .maveli-container { right:10px; top:12%; }
@@ -645,15 +678,18 @@
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ============================================================
-    MAIN CARD (bg01.webp background)
+    MAIN CARD (Logo on Top, then PERUMPAYIL)
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
+            <!-- Big Logo on Top -->
+            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            
+            <!-- Brand Name Below Logo -->
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
             </div>
-            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
         </div>
 
         <div class="onam-tag">ഹാപ്പി ഓണം 2026</div>
@@ -668,6 +704,7 @@
             <span class="premium-badge"><i class="fas fa-star"></i> Fresh Always · Farm sourced</span>
         </div>
 
+        <!-- ===== BUTTONS ===== -->
         <button class="wish-btn-open" onclick="openPopupWithBurst()">
             <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video"></i>
         </button>
