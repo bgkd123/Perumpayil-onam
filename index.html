@@ -6,7 +6,7 @@
     <title>Perumpayil · Duck & Pork · Onam 2026</title>
 
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#7a3e1b" />
+    <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
@@ -43,10 +43,74 @@
             min-height:100vh; padding:16px 12px 40px;
             display:flex; flex-direction:column; align-items:center; justify-content:center;
             position:relative; overflow-x:hidden;
-            background: radial-gradient(circle at 20% 30%, #ffecd2 0%, #fcb69f 50%, #a8e063 120%);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 40%, #a8e063 100%);
         }
 
-        /* ===== SPLASH SCREEN ===== */
+        /* ===== BACKGROUND FLOWER PATTERN (Athapoo) ===== */
+        body::before {
+            content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 3.5rem;
+            letter-spacing: 40px;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            word-break: break-all;
+            line-height: 5rem;
+        }
+
+        /* ============================================================
+           FALLING FLOWERS (ON TOP - z-index: 9999)
+           ============================================================ */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        .pellet, .flower-emoji {
+            position: absolute;
+            left: 0;
+            top: -10%;
+            opacity: 0.7;
+            animation: fallDown linear infinite;
+        }
+        .pellet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .flower-emoji {
+            font-size: 1.6rem;
+        }
+        @keyframes fallDown {
+            0% {
+                top: -10%;
+                opacity: 0.8;
+                transform: rotate(0deg) scale(0.6);
+            }
+            10% { opacity: 1; }
+            100% {
+                top: 110%;
+                opacity: 0.1;
+                transform: rotate(720deg) scale(1.1);
+            }
+        }
+
+        /* ===== SPLASH SCREEN (No rotation) ===== */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -83,14 +147,13 @@
             height: 160px;
             border-radius: 50%;
             background: conic-gradient(from 0deg, #ffd700, #ff8c00, #ff4500, #32cd32, #ffd700, #ff1493, #ffd700);
-            animation: spinRing 8s linear infinite;
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: 0 0 60px rgba(255, 215, 0, 0.4);
             margin-bottom: 10px;
+            /* NO ANIMATION - REMOVED spinRing */
         }
-        @keyframes spinRing { 100% { transform: rotate(360deg); } }
         .splash-ring-inner {
             width: 120px;
             height: 120px;
@@ -156,44 +219,43 @@
             40% { transform: scale(1.2); opacity: 1; }
         }
 
-        /* ===== ATHAPOO ===== */
-        .athapoo-bg {
-            position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
-            width:500px; height:500px; border-radius:50%;
-            background: repeating-conic-gradient(from 0deg, #ffd700 0deg 20deg, #ff8c00 20deg 40deg, #ff4500 40deg 60deg, #32cd32 60deg 80deg, #ff1493 80deg 100deg, #ffd700 100deg 120deg);
-            opacity:0.10; z-index:1;
-            animation: spin 20s linear infinite;
-            pointer-events:none;
+        /* ===== MODERN GLASSMORPHISM CARD ===== */
+        .onam-card {
+            max-width:440px; width:100%; position:relative; z-index:20;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius:48px 48px 32px 32px;
+            padding:24px 20px 32px; 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
+            transition: all 0.3s ease;
         }
-        .athapoo-bg::after {
-            content: "🌸🌼🌺🌻🌷🌸🌼🌺🌻🌷";
-            position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-            font-size:2.5rem; letter-spacing:20px; opacity:0.2; white-space:nowrap;
-            animation: spin 30s linear infinite reverse;
-            width:100%; text-align:center;
-        }
-        @keyframes spin { 100% { transform:translate(-50%,-50%) rotate(360deg); } }
 
-        /* ===== ONAM TAG ===== */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
-            background: linear-gradient(135deg, #f7e2c4, #fae5c0);
-            padding: 14px 12px 10px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 140, 0, 0.2));
+            padding: 16px 12px 12px;
             border-radius: 100px;
             text-align: center;
             font-weight: 700;
-            font-size: 1.9rem;
+            font-size: 2rem;
             letter-spacing: 2px;
             margin: 14px 0 12px;
             border: 2px solid #ffd700;
-            box-shadow: 0 4px 0 #b6894e;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.2), 0 4px 0 #b6894e;
             color: #ff6a00;
             text-shadow: 
                 -2px -2px 0 #ffffff,
                 2px -2px 0 #ffffff,
                 -2px 2px 0 #ffffff,
                 2px 2px 0 #ffffff,
-                0 0 15px rgba(255, 215, 0, 0.2);
+                0 0 30px rgba(255, 215, 0, 0.3);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), 0 4px 0 #b6894e; }
+            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), 0 0 80px rgba(255, 215, 0, 0.2), 0 4px 0 #b6894e; }
         }
 
         /* ===== MAVELI ===== */
@@ -201,7 +263,7 @@
             position:fixed; right:20px; top:15%; z-index:999;
             display:flex; align-items:center; justify-content:center;
             pointer-events:none;
-            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
             animation: floatMaveli 3s ease-in-out infinite;
         }
         .maveli-float-img {
@@ -220,28 +282,12 @@
             100% { transform:translateY(0px) rotate(-6deg); }
         }
 
-        /* ===== CONFETTI ===== */
-        .confetti-container {
-            position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:10; overflow:hidden;
-        }
-        .pellet, .flower-emoji {
-            position:absolute; left:0; top:-10%; opacity:0.5;
-            animation: fallDown linear infinite;
-        }
-        .pellet { width:8px; height:8px; border-radius:50%; }
-        .flower-emoji { font-size:1.2rem; }
-        @keyframes fallDown {
-            0% { top: -10%; opacity:0.6; transform: rotate(0deg) scale(0.6); }
-            10% { opacity:1; }
-            100% { top: 110%; opacity:0.1; transform: rotate(720deg) scale(1.1); }
-        }
-
         /* ===== BURST FLOWERS ===== */
         .burst-flower {
             position: fixed;
             pointer-events: none;
-            font-size: 1.8rem;
-            z-index: 9998;
+            font-size: 1.6rem;
+            z-index: 99998;
             animation: burstFlower 1.2s ease-out forwards;
         }
         @keyframes burstFlower {
@@ -259,11 +305,11 @@
         .size-controller {
             position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
             z-index:1000;
-            background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
+            background:rgba(0,0,0,0.6); backdrop-filter:blur(12px);
             padding:12px 20px; border-radius:60px;
             display:flex; align-items:center; gap:16px;
             border:1px solid #ffd700;
-            box-shadow:0 8px 30px rgba(0,0,0,0.4);
+            box-shadow:0 8px 30px rgba(0,0,0,0.3);
             color:white;
             font-weight:600;
             font-size:0.9rem;
@@ -295,45 +341,26 @@
             font-size:0.8rem;
         }
 
-        /* ===== MAIN CARD ===== */
-        .onam-card {
-            max-width:440px; width:100%; position:relative; z-index:20;
-            background:rgba(255, 248, 235, 0.88); backdrop-filter:blur(6px);
-            border-radius:48px 48px 32px 32px;
-            padding:24px 20px 32px; 
-            border:3px solid transparent;
-            background-clip:padding-box;
-            box-shadow:0 20px 60px rgba(180,80,20,0.3), 0 0 0 4px #ffd700 inset, 0 0 0 6px #ff8c00 inset;
-            position:relative;
-        }
-        .onam-card::before {
-            content: '';
-            position:absolute;
-            top:-3px; left:-3px; right:-3px; bottom:-3px;
-            border-radius:50px 50px 35px 35px;
-            background: linear-gradient(135deg, #ffd700, #ff8c00, #ff4500, #32cd32, #ffd700);
-            z-index:-1;
-        }
-
         .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; flex-wrap:wrap; gap:10px; }
         .title-group { display:flex; flex-direction:column; }
-        .brand { font-size:1.9rem; font-weight:700; letter-spacing:1px; color:#7a3e1b; line-height:1.1; text-shadow:2px 2px 0 #f7d9b0; }
+        .brand { font-size:1.9rem; font-weight:700; letter-spacing:1px; color:#4a2a0e; line-height:1.1; text-shadow:2px 2px 0 rgba(255,215,0,0.3); }
         .brand small { font-size:1rem; font-weight:500; color:#a55d2a; letter-spacing:2px; margin-left:6px; }
         .subhead {
-            font-size:0.9rem; color:#8b5a33; background:#faead4; display:inline-block; padding:0 14px 0 10px;
-            border-radius:40px; margin-top:2px; width:fit-content; border:1px solid #eccbaa;
+            font-size:0.9rem; color:#5a3d1e; background:rgba(255,255,255,0.3); display:inline-block; padding:0 14px 0 10px;
+            border-radius:40px; margin-top:2px; width:fit-content; border:1px solid rgba(255,215,0,0.3);
+            backdrop-filter:blur(4px);
         }
         .header-logo {
-            width:60px; height:60px; border-radius:50%; border:3px solid #b57d4a;
-            box-shadow:0 4px 12px rgba(100,60,10,0.3); object-fit:cover; background:#faeedb; flex-shrink:0;
+            width:60px; height:60px; border-radius:50%; border:3px solid #ffd700;
+            box-shadow:0 4px 20px rgba(255,215,0,0.3); object-fit:cover; background:#fff8ec; flex-shrink:0;
         }
 
         .meat-icons {
-            display:flex; justify-content:center; gap:30px; background:#fff6e7; border-radius:60px;
-            padding:12px 8px; margin:8px 0 16px; border:2px solid #eaccb0;
+            display:flex; justify-content:center; gap:30px; background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); border-radius:60px;
+            padding:12px 8px; margin:8px 0 16px; border:1px solid rgba(255,215,0,0.2);
         }
         .meat-icons span { font-size:2.2rem; filter:drop-shadow(0 4px 6px rgba(150,70,0,0.2)); }
-        .meat-icons .label { font-size:0.8rem; font-weight:600; color:#5b391d; display:block; text-align:center; letter-spacing:1px; }
+        .meat-icons .label { font-size:0.8rem; font-weight:600; color:#4a2a0e; display:block; text-align:center; letter-spacing:1px; }
 
         .premium-badge {
             background: linear-gradient(135deg, #0f3b2c, #1f6e4a);
@@ -343,7 +370,6 @@
         }
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
-        /* ===== BUTTONS ===== */
         .wish-btn-open {
             background: linear-gradient(145deg, #8b4e1a, #5a3010);
             color: #fcf3e2;
@@ -358,14 +384,22 @@
             justify-content: center;
             gap: 14px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2), 0 8px 0 #2f1a08;
-            transition: all 0.2s ease;
+            box-shadow: 0 8px 30px rgba(139, 78, 26, 0.4), 0 0 30px rgba(255, 215, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             max-width: 320px;
             margin: 12px auto 6px;
             border: 2px solid #ffd700;
             position: relative;
             overflow: hidden;
+        }
+        .wish-btn-open:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(139, 78, 26, 0.5), 0 0 50px rgba(255, 215, 0, 0.2);
+        }
+        .wish-btn-open:active {
+            transform: translateY(5px) scale(0.98);
+            box-shadow: 0 4px 20px rgba(139, 78, 26, 0.3);
         }
         .wish-btn-open i.fa-gift {
             animation: giftShake 2s ease-in-out infinite;
@@ -376,10 +410,6 @@
             20% { transform: rotate(-10deg); }
             30% { transform: rotate(5deg); }
             40%, 100% { transform: rotate(0deg); }
-        }
-        .wish-btn-open:active {
-            transform: translateY(5px);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), 0 3px 0 #2f1a08;
         }
 
         .share-btn {
@@ -396,34 +426,36 @@
             justify-content: center;
             gap: 12px;
             cursor: pointer;
-            box-shadow: 0 6px 0 #0a2a1a, 0 0 20px rgba(0, 200, 100, 0.15);
-            transition: all 0.2s ease;
+            box-shadow: 0 6px 25px rgba(26, 107, 74, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
             max-width: 320px;
             margin: 8px auto;
             border: 2px solid #ffd700;
         }
+        .share-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 35px rgba(26, 107, 74, 0.5);
+        }
         .share-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #0a2a1a;
+            transform: translateY(4px) scale(0.98);
         }
         .share-btn i {
             color: #ffd700;
             font-size: 1.2rem;
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
             color: #fff;
             padding: 12px 24px;
             border-radius: 40px;
             font-size: 0.9rem;
-            backdrop-filter: blur(8px);
             border: 1px solid #ffd700;
             z-index: 99999;
             opacity: 0;
@@ -442,13 +474,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 9999;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 99999;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 0;
-            animation: curtainDown 0.5s ease-out forwards;
+            animation: curtainDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: top;
         }
         .popup-overlay.active {
@@ -490,8 +522,9 @@
             width: 44px;
             height: 44px;
             background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             font-size: 1.8rem;
             font-weight: 300;
@@ -499,10 +532,8 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 10000;
-            transition: 0.2s;
-            backdrop-filter: blur(4px);
-            line-height: 1;
+            z-index: 100000;
+            transition: all 0.3s ease;
         }
         .popup-close-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
         .popup-close-btn:active { transform: scale(0.9); }
@@ -514,17 +545,17 @@
             width: 44px;
             height: 44px;
             background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             font-size: 1.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 10000;
-            transition: 0.2s;
-            backdrop-filter: blur(4px);
+            z-index: 100000;
+            transition: all 0.3s ease;
         }
         .popup-sound-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
         .popup-sound-btn:active { transform: scale(0.9); }
@@ -535,53 +566,62 @@
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
             color: #fff;
             padding: 10px 24px;
             border-radius: 40px;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            backdrop-filter: blur(4px);
             pointer-events: none;
             white-space: nowrap;
-            z-index: 10000;
+            z-index: 100000;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .popup-close-hint i { margin-right: 8px; }
 
-        /* ===== INFO GRID ===== */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
-            background:rgba(255,255,255,0.85); backdrop-filter:blur(2px); padding:12px 16px; border-radius:60px;
-            display:flex; align-items:center; gap:14px; border:1px solid #ffd700; box-shadow:0 4px 8px rgba(140,80,20,0.1);
+            background:rgba(255,255,255,0.2); backdrop-filter:blur(8px); padding:12px 16px; border-radius:60px;
+            display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
+            box-shadow:0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
-        .info-item i { width:28px; font-size:1.3rem; color:#7a4a1f; text-align:center; }
+        .info-item:hover {
+            background:rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
         .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
         .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
         .info-item .action-link {
             background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
             font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
-            transition:0.15s; box-shadow:0 3px 0 #0d412e;
+            transition:all 0.3s ease; box-shadow:0 3px 0 #0d412e;
         }
+        .info-item .action-link:hover { background:#2a8a5a; transform:scale(1.05); }
         .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
         .info-item .action-link.whatsapp { background:#1f8b4c; box-shadow:0 3px 0 #0d5e31; }
+        .info-item .action-link.whatsapp:hover { background:#2aa85c; }
 
         .order-section {
-            background:linear-gradient(145deg, #f5e3ca, #e7d5ba); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
-            margin:16px 0 8px; border:2px solid #ffd700; box-shadow:inset 0 -6px 0 #b6894e;
+            background:rgba(255,215,0,0.1); backdrop-filter:blur(8px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
+            margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
         }
         .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
         .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
         .order-btn {
             background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
             font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
-            box-shadow:0 6px 0 #0f0a06; transition:0.1s ease; cursor:pointer; border:1px solid #ffd700;
+            box-shadow:0 6px 0 #0f0a06; transition:all 0.3s ease; cursor:pointer; border:1px solid #ffd700;
             flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
         }
+        .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0f0a06; }
         .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
         .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
+        .order-btn.green:hover { background:#229a52; }
         .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
+        .order-btn.amber:hover { background:#d4882a; }
 
-        /* ===== FOOTER ===== */
         .footer-note {
             margin-top: 24px;
             text-align: center;
@@ -593,17 +633,18 @@
             font-family: 'Anakha', 'Segoe UI', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
-            color: #5a3d1e;
+            color: #4a2a0e;
             display: block;
             margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
         }
         .footer-note .english {
             font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
             font-size: 1.5rem;
             font-weight: normal;
-            color: #7a3e1b;
+            color: #6a3d1e;
             display: block;
-            text-shadow: 1px 1px 0 rgba(255,215,0,0.3);
+            text-shadow: 0 2px 20px rgba(255,215,0,0.2);
             letter-spacing: 1px;
         }
 
@@ -619,8 +660,6 @@
             .popup-close-btn { top:12px; right:12px; width:38px; height:38px; font-size:1.5rem; }
             .popup-close-hint { font-size:0.7rem; padding:6px 14px; bottom:16px; }
             .onam-tag { font-size:1.5rem; }
-            .athapoo-bg { width:300px; height:300px; }
-            .flower-emoji { font-size:1rem; }
             .splash-ring { width:130px; height:130px; }
             .splash-ring-inner { width:100px; height:100px; }
             .splash-ring-inner img { width:70px; }
@@ -653,9 +692,6 @@
     <!-- ===== AUDIO ===== -->
     <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
 
-    <!-- ===== ATHAPOO ===== -->
-    <div class="athapoo-bg"></div>
-
     <!-- ===== MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
         <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
@@ -672,7 +708,9 @@
         <span class="size-label" id="sizeDisplay">120</span>
     </div>
 
-    <!-- ===== CONFETTI ===== -->
+    <!-- ============================================================
+    FALLING FLOWERS (30 items only - fast)
+    ============================================================ -->
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ===== MAIN CARD ===== -->
@@ -715,7 +753,7 @@
                     BOAT JETTY ROAD, CHANGANACHERRY MARKET
                     <small>📍 Perumpayil, Kerala</small>
                 </div>
-                <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link" style="background:#2f5d7a;box-shadow:0 3px 0 #1b3b4f;"><i class="fas fa-directions"></i> Map</a>
+                <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link"><i class="fas fa-directions"></i> Map</a>
             </div>
             <div class="info-item">
                 <i class="fab fa-whatsapp" style="color:#1f8b4c;"></i>
@@ -742,7 +780,7 @@
                 <a href="tel:+919388151050" class="order-btn amber"><i class="fas fa-phone"></i> Call</a>
                 <a href="#" class="order-btn" style="background:#4d3a22;box-shadow:0 6px 0 #2f1f0e;"><i class="fas fa-shopping-cart"></i> Quick Order</a>
             </div>
-            <p style="margin-top:12px;font-size:0.8rem;color:#4e351b;text-align:center;background:#f3ddbe;padding:6px;border-radius:40px;">
+            <p style="margin-top:12px;font-size:0.8rem;color:#4e351b;text-align:center;background:rgba(255,215,0,0.15);padding:6px;border-radius:40px;backdrop-filter:blur(4px);">
                 <i class="fas fa-truck"></i> Free home delivery · Onam special offers
             </p>
         </div>
@@ -756,10 +794,10 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
+            <!-- No poster text - clean video -->
             <video id="popupVideo" src="onam_wish.mp4" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
-                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect width='400' height='400' fill='%231a1a1a'/%3E%3Ctext x='80' y='220' font-size='32' font-family='Segoe UI' fill='%23ffd700'%3E🎬 A Gift For You%3C/text%3E%3Ctext x='100' y='280' font-size='20' fill='%23ffaa00'%3E❤️ Perumpayil%3C/text%3E%3C/svg%3E"
                    onclick="closePopup()">
                 Your browser does not support the video tag.
             </video>
@@ -848,7 +886,7 @@
         // =============================================================
         function createBurstFlowers() {
             const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            const count = 15;
+            const count = 12;
 
             for (let i = 0; i < count; i++) {
                 const flower = document.createElement('div');
@@ -856,15 +894,15 @@
                 flower.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
                 
                 const angle = Math.random() * 2 * Math.PI;
-                const distance = 80 + Math.random() * 150;
+                const distance = 60 + Math.random() * 120;
                 const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance - 100;
+                const ty = Math.sin(angle) * distance - 80;
                 
                 flower.style.setProperty('--tx', tx + 'px');
                 flower.style.setProperty('--ty', ty + 'px');
-                flower.style.left = (window.innerWidth / 2 + Math.random() * 40 - 20) + 'px';
-                flower.style.top = (window.innerHeight / 2 + Math.random() * 40 - 20) + 'px';
-                flower.style.fontSize = (1.2 + Math.random() * 1.2) + 'rem';
+                flower.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
+                flower.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
+                flower.style.fontSize = (1.0 + Math.random() * 1.0) + 'rem';
                 
                 document.body.appendChild(flower);
                 setTimeout(() => { flower.remove(); }, 1300);
@@ -956,19 +994,19 @@
         }
 
         // =============================================================
-        // CONFETTI
+        // FALLING FLOWERS (30 items only - fast)
         // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
-            const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00','#00bfff'];
-            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷'];
-            for(let i=0; i<20; i++) {
-                const isFlower = Math.random() > 0.5;
+            const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
+            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
+            for(let i=0; i<30; i++) {
+                const isFlower = Math.random() > 0.4;
                 const el = document.createElement('div');
                 if(isFlower) {
                     el.className = 'flower-emoji';
                     el.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                    el.style.fontSize = (0.8 + Math.random() * 1.0) + 'rem';
+                    el.style.fontSize = (1.0 + Math.random() * 1.2) + 'rem';
                 } else {
                     el.className = 'pellet';
                     el.style.background = colors[Math.floor(Math.random() * colors.length)];
@@ -978,9 +1016,9 @@
                     el.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
                 }
                 el.style.left = Math.random() * 100 + '%';
-                el.style.animationDuration = (14 + Math.random() * 18) + 's';
+                el.style.animationDuration = (12 + Math.random() * 16) + 's';
                 el.style.animationDelay = (Math.random() * 20) + 's';
-                el.style.opacity = 0.2 + Math.random() * 0.3;
+                el.style.opacity = 0.4 + Math.random() * 0.4;
                 el.style.transform = `rotate(${Math.random() * 360}deg)`;
                 container.appendChild(el);
             }
