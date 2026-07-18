@@ -1,4 +1,4 @@
-const CACHE_NAME = 'perumpayil-v4';
+const CACHE_NAME = 'perumpayil-v5';
 const urlsToCache = [
   '/perumpayil-onam/',
   '/perumpayil-onam/index.html',
