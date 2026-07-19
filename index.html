@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <!-- ===== VERSION 7 - CACHE BUSTER ===== -->
-    <link rel="manifest" href="manifest.json?v=7" />
+    <!-- ===== VERSION 8 - CACHE BUSTER ===== -->
+    <link rel="manifest" href="manifest.json?v=8" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=7" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=8" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -21,28 +21,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=7') format('opentype');
+            src: url('TarmilesAction.otf?v=8') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=7') format('truetype');
+            src: url('MLU-Anakha.ttf?v=8') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=7') format('truetype');
+            src: url('Pacifico.ttf?v=8') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=7') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=8') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -269,7 +269,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=7');
+            background-image: url('bg01.webp?v=8');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -351,7 +351,6 @@
             border: 2px solid #ffd700;
             box-shadow: 0 0 40px rgba(244, 164, 96, 0.4), 0 4px 0 #b6894e;
             
-            /* ===== DARK RED + WHITE STROKE ===== */
             color: #8b0000;
             text-shadow: 
                 -2px -2px 0 #ffffff,
@@ -456,20 +455,34 @@
             font-size:0.8rem;
         }
 
-        /* ===== REST OF STYLES ===== */
+        /* ============================================================
+           MEAT ICONS - FRESH FIXED (Segoe UI for English)
+           ============================================================ */
         .meat-icons {
-            display:flex; justify-content:center; gap:30px; background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); border-radius:60px;
-            padding:12px 8px; margin:8px 0 16px; border:1px solid rgba(255,215,0,0.2);
+            display:flex; 
+            justify-content:center; 
+            gap:30px; 
+            background:rgba(255,255,255,0.3); 
+            backdrop-filter:blur(4px); 
+            border-radius:60px;
+            padding:12px 8px; 
+            margin:8px 0 16px; 
+            border:1px solid rgba(255,215,0,0.2);
+        }
+        .meat-icons span { 
+            font-size:2.2rem; 
+            filter:drop-shadow(0 4px 6px rgba(150,70,0,0.2)); 
         }
         .meat-icons .label {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #4a2a0e;
-    display: block;
-    text-align: center;
-    letter-spacing: 1px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #4a2a0e;
+            display: block;
+            text-align: center;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Arial, sans-serif;  /* ← FIXED */
+        }
+
         .premium-badge {
             background: linear-gradient(135deg, #0f3b2c, #1f6e4a);
             color:#f7efd6; padding:8px 12px; border-radius:40px; display:inline-block;
@@ -773,17 +786,17 @@
     SPLASH SCREEN
     ============================================================ -->
     <div id="splash-screen">
-        <img src="onam26.webp?v=7" alt="Onam 2026" 
-             onerror="this.onerror=null; this.src='onam26.png?v=7';" />
+        <img src="onam26.webp?v=8" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png?v=8';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=7" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=8" loop preload="auto"></audio>
 
     <!-- ===== WALKING MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=7" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=8" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -805,7 +818,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=7" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=8" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -813,13 +826,13 @@
             </div>
         </div>
 
-        <!-- ===== ONAM TAG - DARK RED + WHITE STROKE ===== -->
         <div class="onam-tag">ഹാപ്പി ഓണം</div>
 
+        <!-- ===== MEAT ICONS - FRESH FIXED ===== -->
         <div class="meat-icons">
             <div><span>🦆</span><span class="label">DUCK</span></div>
             <div><span>🐷</span><span class="label">PORK</span></div>
-            <div><span>??</span><span class="label">FRESH</span></div>
+            <div><span>🥩</span><span class="label">FRESH</span></div>
         </div>
 
         <div style="text-align:center;">
@@ -884,7 +897,7 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=7" 
+            <video id="popupVideo" src="onam_wish.mp4?v=8" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -1034,7 +1047,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=7')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=8')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
