@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Perumpayil · Duck & Pork · Onam 2026</title>
+    <title>Perumpayil · Meat Centre · Onam</title>
 
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#8b4e1a" />
@@ -68,32 +68,62 @@
             line-height: 5rem;
         }
 
-        /* ===== FLOATING FLOWERS ===== */
-        .float-flower {
+        /* ============================================================
+           FLYING FLOWERS (Startup thottu)
+           ============================================================ */
+        .flying-flower {
             position: fixed;
             z-index: 15;
             pointer-events: none;
             font-size: 2.5rem;
-            opacity: 0.6;
-            animation: floatFlower 4s ease-in-out infinite;
+            opacity: 0.7;
+            animation: flyFlower 6s ease-in-out infinite;
         }
-        .float-flower-left {
-            left: 10px;
-            bottom: 20%;
-            animation-delay: 0s;
-        }
-        .float-flower-right {
-            right: 10px;
-            bottom: 30%;
-            animation-delay: 1.5s;
-        }
-        @keyframes floatFlower {
-            0% { transform: translateY(0px) rotate(0deg) scale(1); }
-            50% { transform: translateY(-25px) rotate(10deg) scale(1.1); }
-            100% { transform: translateY(0px) rotate(0deg) scale(1); }
+        .flying-flower-1 { left: 5%; top: 10%; animation-delay: 0s; }
+        .flying-flower-2 { right: 5%; top: 20%; animation-delay: 1s; }
+        .flying-flower-3 { left: 8%; bottom: 15%; animation-delay: 2s; }
+        .flying-flower-4 { right: 8%; bottom: 25%; animation-delay: 3s; }
+        .flying-flower-5 { left: 15%; top: 45%; animation-delay: 1.5s; }
+        .flying-flower-6 { right: 15%; top: 55%; animation-delay: 2.5s; }
+
+        @keyframes flyFlower {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(40px, -30px) rotate(15deg) scale(1.1); }
+            50% { transform: translate(-20px, -50px) rotate(-10deg) scale(0.9); }
+            75% { transform: translate(30px, -20px) rotate(8deg) scale(1.05); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
 
-        /* ===== FALLING FLOWERS ===== */
+        /* ============================================================
+           BUTTERFLIES (Poombattakal)
+           ============================================================ */
+        .butterfly {
+            position: fixed;
+            z-index: 16;
+            pointer-events: none;
+            font-size: 2.2rem;
+            opacity: 0.8;
+            animation: flyButterfly 8s ease-in-out infinite;
+        }
+        .butterfly-1 { left: 2%; top: 25%; animation-delay: 0s; }
+        .butterfly-2 { right: 3%; top: 35%; animation-delay: 2s; }
+        .butterfly-3 { left: 5%; top: 65%; animation-delay: 4s; }
+        .butterfly-4 { right: 5%; top: 70%; animation-delay: 1s; }
+        .butterfly-5 { left: 20%; top: 5%; animation-delay: 3s; }
+        .butterfly-6 { right: 20%; top: 8%; animation-delay: 5s; }
+
+        @keyframes flyButterfly {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            20% { transform: translate(60px, -40px) rotate(20deg) scale(1.2); }
+            40% { transform: translate(-30px, -70px) rotate(-15deg) scale(0.8); }
+            60% { transform: translate(50px, -20px) rotate(10deg) scale(1.1); }
+            80% { transform: translate(-40px, -50px) rotate(-20deg) scale(0.9); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+        }
+
+        /* ============================================================
+           FALLING FLOWERS
+           ============================================================ */
         .confetti-container {
             position: fixed;
             top: 0;
@@ -119,7 +149,9 @@
             100% { top: 110%; opacity: 0.1; transform: rotate(720deg) scale(1.1); }
         }
 
-        /* ===== SPLASH SCREEN ===== */
+        /* ============================================================
+           SPLASH SCREEN WITH VIGNETTE
+           ============================================================ */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -142,12 +174,25 @@
             visibility: hidden;
             pointer-events: none;
         }
+        #splash-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.75) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
         #splash-screen img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
             background: #000;
+            position: relative;
+            z-index: 0;
         }
         
         .splash-continue-btn {
@@ -200,7 +245,9 @@
             100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
-        /* ===== MAIN CARD ===== */
+        /* ============================================================
+           MAIN CARD - NO GLASSMORPHISM (bg01.webp visible)
+           ============================================================ */
         .onam-card {
             max-width:440px; 
             width:100%; 
@@ -208,31 +255,16 @@
             z-index:20;
             border-radius:48px 48px 32px 32px;
             padding:24px 20px 32px; 
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
             background-image: url('bg01.webp');
             background-size: cover;
             background-position: center;
+            background-color: rgba(255, 248, 235, 0.2);
             background-blend-mode: overlay;
-            background-color: rgba(255, 248, 235, 0.3);
         }
-        .onam-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 48px 48px 32px 32px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(1px);
-            z-index: 0;
-            pointer-events: none;
-        }
-        .onam-card > * { position: relative; z-index: 1; }
 
         /* ===== HEADER ===== */
         .header {
@@ -241,14 +273,14 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 8px;
-            gap: 8px;
+            gap: 6px;
         }
         .header-logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 3px solid #ffd700;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.4);
             object-fit: cover;
             background: #fff8ec;
             flex-shrink: 0;
@@ -260,42 +292,47 @@
             text-align: center;
         }
         .brand {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-family: 'TarmilesAction', 'Baloo 2', 'Poppins', cursive, sans-serif;
+            font-size: 2.4rem;
+            font-weight: normal;
             letter-spacing: 2px;
             color: #4a2a0e;
             line-height: 1.1;
-            text-shadow: 2px 2px 0 rgba(255, 215, 0, 0.3);
+            text-shadow: 2px 2px 0 rgba(255, 215, 0, 0.4), 0 0 30px rgba(255,215,0,0.1);
         }
-        .brand small {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #a55d2a;
-            letter-spacing: 2px;
-            margin-left: 6px;
+        .brand-sub {
+            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #5a3d1e;
+            margin-top: -4px;
+            text-shadow: 1px 1px 0 rgba(255,215,0,0.3);
+            letter-spacing: 1px;
         }
         .subhead {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #5a3d1e;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
             display: inline-block;
             padding: 0 14px 0 10px;
             border-radius: 40px;
-            margin-top: 2px;
+            margin-top: 4px;
             width: fit-content;
             border: 1px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(2px);
         }
 
-        /* ===== ONAM TAG ===== */
+        /* ============================================================
+           ONAM TAG - Onam color (No 2026)
+           ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
             background: #f4a460;
-            padding: 16px 12px 12px;
+            padding: 14px 12px 10px;
             border-radius: 100px;
             text-align: center;
             font-weight: 700;
-            font-size: 2rem;
+            font-size: 1.8rem;
             letter-spacing: 2px;
             margin: 14px 0 12px;
             border: 2px solid #ffd700;
@@ -314,7 +351,9 @@
             50% { box-shadow: 0 0 60px rgba(244, 164, 96, 0.6), 0 0 80px rgba(244, 164, 96, 0.2), 0 4px 0 #b6894e; }
         }
 
-        /* ===== WALKING MAVELI ===== */
+        /* ============================================================
+           WALKING MAVELI
+           ============================================================ */
         .maveli-container {
             position: fixed;
             right: 20px;
@@ -667,8 +706,9 @@
         }
 
         @media (max-width:420px) {
-            .brand { font-size:1.6rem; }
-            .header-logo { width:90px; height:90px; }
+            .brand { font-size:1.8rem; }
+            .brand-sub { font-size:1rem; }
+            .header-logo { width:80px; height:80px; }
             .maveli-float-img { width:60px; }
             .maveli-fallback { font-size:3rem; }
             .maveli-container { right:10px; bottom:20%; }
@@ -677,11 +717,10 @@
             .popup-sound-btn { top:12px; left:12px; width:38px; height:38px; font-size:1.2rem; }
             .popup-close-btn { top:12px; right:12px; width:38px; height:38px; font-size:1.5rem; }
             .popup-close-hint { font-size:0.7rem; padding:6px 14px; bottom:16px; }
-            .onam-tag { font-size:1.5rem; }
+            .onam-tag { font-size:1.4rem; }
             .splash-continue-btn { bottom:40px; padding:14px 32px; font-size:1rem; }
-            .float-flower { font-size:1.8rem; }
-            .float-flower-left { left:5px; bottom:15%; }
-            .float-flower-right { right:5px; bottom:25%; }
+            .flying-flower { font-size:1.8rem; }
+            .butterfly { font-size:1.6rem; }
             .footer-note .malayalam { font-size:1rem; }
             .footer-note .english { font-size:1.2rem; }
         }
@@ -689,11 +728,29 @@
 </head>
 <body>
 
-    <!-- ===== FLOATING FLOWERS ===== -->
-    <div class="float-flower float-flower-left">🌸</div>
-    <div class="float-flower float-flower-right">🌺</div>
+    <!-- ============================================================
+    FLYING FLOWERS (6)
+    ============================================================ -->
+    <div class="flying-flower flying-flower-1">🌸</div>
+    <div class="flying-flower flying-flower-2">🌺</div>
+    <div class="flying-flower flying-flower-3">🌼</div>
+    <div class="flying-flower flying-flower-4">🌻</div>
+    <div class="flying-flower flying-flower-5">🌷</div>
+    <div class="flying-flower flying-flower-6">💐</div>
 
-    <!-- ===== SPLASH SCREEN ===== -->
+    <!-- ============================================================
+    BUTTERFLIES (6)
+    ============================================================ -->
+    <div class="butterfly butterfly-1">🦋</div>
+    <div class="butterfly butterfly-2">🦋</div>
+    <div class="butterfly butterfly-3">🦋</div>
+    <div class="butterfly butterfly-4">🦋</div>
+    <div class="butterfly butterfly-5">🦋</div>
+    <div class="butterfly butterfly-6">🦋</div>
+
+    <!-- ============================================================
+    SPLASH SCREEN
+    ============================================================ -->
     <div id="splash-screen">
         <img src="onam26.webp" alt="Onam 2026" 
              onerror="this.onerror=null; this.src='onam26.png';" />
@@ -727,12 +784,13 @@
         <div class="header">
             <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
-                <div class="brand">PERUMPAYIL <small> MEAT CENTRE</small></div>
+                <div class="brand">Perumpayil</div>
+                <div class="brand-sub">Meat Centre</div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
             </div>
         </div>
 
-        <div class="onam-tag">ഹാപ്പി ഓണം </div>
+        <div class="onam-tag">ഹാപ്പി ഓണം</div>
 
         <div class="meat-icons">
             <div><span>🦆</span><span class="label">DUCK</span></div>
