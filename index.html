@@ -15,7 +15,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
-        /* ===== FONTS (JS will set paths) ===== */
+        /* ===== FONTS ===== */
+        @font-face {
+            font-family: 'TarmilesAction';
+            src: url('TarmilesAction.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Anakha';
+            src: url('MLU-Anakha.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'CelebrateScript';
+            src: url('Pacifico.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,system-ui,sans-serif; }
         body {
             min-height:100vh; padding:16px 12px 40px;
@@ -46,9 +68,7 @@
             line-height: 5rem;
         }
 
-        /* ============================================================
-           FLOATING FLOWERS
-           ============================================================ */
+        /* ===== FLOATING FLOWERS ===== */
         .float-flower {
             position: fixed;
             z-index: 15;
@@ -73,9 +93,7 @@
             100% { transform: translateY(0px) rotate(0deg) scale(1); }
         }
 
-        /* ============================================================
-           FALLING FLOWERS
-           ============================================================ */
+        /* ===== FALLING FLOWERS ===== */
         .confetti-container {
             position: fixed;
             top: 0;
@@ -101,9 +119,7 @@
             100% { top: 110%; opacity: 0.1; transform: rotate(720deg) scale(1.1); }
         }
 
-        /* ============================================================
-           SPLASH SCREEN
-           ============================================================ */
+        /* ===== SPLASH SCREEN ===== */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -184,9 +200,7 @@
             100% { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
-        /* ============================================================
-           MAIN CARD
-           ============================================================ */
+        /* ===== MAIN CARD ===== */
         .onam-card {
             max-width:440px; 
             width:100%; 
@@ -197,6 +211,8 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 215, 0, 0.2) inset;
             transition: all 0.3s ease;
+            
+            background-image: url('bg01.webp');
             background-size: cover;
             background-position: center;
             background-blend-mode: overlay;
@@ -298,9 +314,7 @@
             50% { box-shadow: 0 0 60px rgba(244, 164, 96, 0.6), 0 0 80px rgba(244, 164, 96, 0.2), 0 4px 0 #b6894e; }
         }
 
-        /* ============================================================
-           WALKING MAVELI
-           ============================================================ */
+        /* ===== WALKING MAVELI ===== */
         .maveli-container {
             position: fixed;
             right: 20px;
@@ -679,18 +693,20 @@
     <div class="float-flower float-flower-left">🌸</div>
     <div class="float-flower float-flower-right">🌺</div>
 
-    <!-- ===== SPLASH SCREEN (JS will set src) ===== -->
+    <!-- ===== SPLASH SCREEN ===== -->
     <div id="splash-screen">
-        <img id="splashImage" src="" alt="Onam 2026" />
+        <img src="onam26.webp" alt="Onam 2026" 
+             onerror="this.onerror=null; this.src='onam26.png';" />
         <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
     </div>
 
-    <!-- ===== AUDIO (JS will set src) ===== -->
-    <audio id="bgAudio" loop preload="auto"></audio>
+    <!-- ===== AUDIO ===== -->
+    <audio id="bgAudio" src="onambg.mp3" loop preload="auto"></audio>
 
-    <!-- ===== WALKING MAVELI (JS will set src) ===== -->
+    <!-- ===== WALKING MAVELI ===== -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="" alt="Maveli" class="maveli-float-img" />
+        <img id="maveliImage" src="maveli.png" alt="Maveli" class="maveli-float-img" 
+             onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
 
@@ -707,9 +723,9 @@
     <div class="confetti-container" id="confettiBox"></div>
 
     <!-- ===== MAIN CARD ===== -->
-    <div class="onam-card" id="mainCard" style="background-image: url('');">
+    <div class="onam-card" id="mainCard">
         <div class="header">
-            <img id="headerLogo" class="header-logo" src="" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL <small>🦆🐷</small></div>
                 <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
@@ -753,7 +769,7 @@
                     +91 6282116735
                     <small>WhatsApp for orders</small>
                 </div>
-                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fas fa-whatsapp"></i> Chat</a>
+                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
             </div>
             <div class="info-item">
                 <i class="fas fa-phone-alt"></i>
@@ -786,8 +802,10 @@
     <!-- ===== VIDEO POPUP ===== -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" autoplay loop playsinline webkit-playsinline preload="none" onclick="closePopup()">
-                <source id="videoSource" src="" type="video/mp4">
+            <video id="popupVideo" src="onam_wish.mp4" 
+                   autoplay loop playsinline webkit-playsinline
+                   preload="none"
+                   onclick="closePopup()">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -801,100 +819,7 @@
     </div>
 
     <script>
-        // =============================================================
-        // DYNAMIC BASE URL - സ്വയമേവ കണ്ടെത്തുന്നു
-        // =============================================================
-        function getBaseUrl() {
-            // നിലവിലെ URL-ൽ നിന്ന് Base URL കണ്ടെത്തുക
-            const path = window.location.pathname;
-            if (path.includes('/perumpayil-onam/')) {
-                return '/perumpayil-onam/';
-            } else if (path.includes('/Perumpayil-onam/')) {
-                return '/Perumpayil-onam/';
-            } else {
-                // Fallback: Repository പേര്
-                return '/perumpayil-onam/';
-            }
-        }
-
-        const BASE_URL = getBaseUrl();
-
-        // =============================================================
-        // LOAD ALL ASSETS
-        // =============================================================
-        function loadAssets() {
-            // Splash Image
-            const splashImg = document.getElementById('splashImage');
-            splashImg.src = BASE_URL + 'onam26.webp';
-            splashImg.onerror = function() {
-                this.src = BASE_URL + 'onam26.png';
-            };
-
-            // Background Music
-            const audio = document.getElementById('bgAudio');
-            audio.src = BASE_URL + 'onambg.mp3';
-
-            // Maveli Image
-            const maveliImg = document.getElementById('maveliImage');
-            maveliImg.src = BASE_URL + 'maveli.png';
-            maveliImg.onerror = function() {
-                this.style.display = 'none';
-                document.getElementById('maveliFallback').style.display = 'block';
-            };
-
-            // Header Logo
-            const headerLogo = document.getElementById('headerLogo');
-            headerLogo.src = BASE_URL + 'Logo.png';
-
-            // Card Background
-            const card = document.getElementById('mainCard');
-            card.style.backgroundImage = 'url(' + BASE_URL + 'bg01.webp)';
-
-            // Video Source
-            const videoSource = document.getElementById('videoSource');
-            videoSource.src = BASE_URL + 'onam_wish.mp4';
-            const video = document.getElementById('popupVideo');
-            video.load();
-
-            // Load Fonts dynamically
-            loadFonts();
-        }
-
-        // =============================================================
-        // LOAD FONTS DYNAMICALLY
-        // =============================================================
-        function loadFonts() {
-            const fontStyles = `
-                @font-face {
-                    font-family: 'TarmilesAction';
-                    src: url('${BASE_URL}TarmilesAction.otf') format('opentype');
-                    font-weight: normal;
-                    font-style: normal;
-                    font-display: swap;
-                }
-                @font-face {
-                    font-family: 'Anakha';
-                    src: url('${BASE_URL}MLU-Anakha.ttf') format('truetype');
-                    font-weight: normal;
-                    font-style: normal;
-                    font-display: swap;
-                }
-                @font-face {
-                    font-family: 'CelebrateScript';
-                    src: url('${BASE_URL}Pacifico.ttf') format('truetype');
-                    font-weight: normal;
-                    font-style: normal;
-                    font-display: swap;
-                }
-            `;
-            const styleSheet = document.createElement('style');
-            styleSheet.textContent = fontStyles;
-            document.head.appendChild(styleSheet);
-        }
-
-        // =============================================================
-        // BACKGROUND MUSIC
-        // =============================================================
+        // ===== BACKGROUND MUSIC =====
         const bgAudio = document.getElementById('bgAudio');
         let bgIsPlaying = false;
         let audioInitAttempted = false;
@@ -922,9 +847,7 @@
             document.getElementById('mainCard').style.pointerEvents = 'auto';
         }
 
-        // =============================================================
-        // SHARE
-        // =============================================================
+        // ===== SHARE =====
         function shareApp() {
             const url = window.location.href;
             if (navigator.share) {
@@ -942,9 +865,7 @@
         }
         function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
 
-        // =============================================================
-        // BURST FLOWERS
-        // =============================================================
+        // ===== BURST FLOWERS =====
         function createBurstFlowers() {
             const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
             for (let i = 0; i < 12; i++) {
@@ -999,9 +920,7 @@
             if (display) display.textContent = val;
         }
 
-        // =============================================================
-        // CONFETTI
-        // =============================================================
+        // ===== CONFETTI =====
         (function() {
             const container = document.getElementById('confettiBox');
             const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
@@ -1030,12 +949,10 @@
             }
         })();
 
-        // =============================================================
-        // SERVICE WORKER (PWA)
-        // =============================================================
+        // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register(BASE_URL + 'sw.js')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
@@ -1045,18 +962,11 @@
             });
         }
 
-        // =============================================================
-        // SHOW CONTINUE BUTTON AFTER 2s
-        // =============================================================
+        // ===== SHOW CONTINUE BUTTON AFTER 2s =====
         setTimeout(() => {
             const btn = document.querySelector('.splash-continue-btn');
             if (btn) { btn.classList.add('show'); btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
         }, 2000);
-
-        // =============================================================
-        // LOAD ASSETS ON PAGE LOAD
-        // =============================================================
-        window.addEventListener('DOMContentLoaded', loadAssets);
     </script>
 </body>
 </html>

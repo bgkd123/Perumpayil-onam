@@ -2,21 +2,21 @@
   "name": "Perumpayil Onam 2026",
   "short_name": "Perumpayil",
   "description": "Onam 2026 Wish App for Perumpayil Duck & Pork",
-  "start_url": "https://bgkd123.github.io/perumpayil-onam/",
-  "scope": "https://bgkd123.github.io/perumpayil-onam/",
+  "start_url": "/perumpayil-onam/",
+  "scope": "/perumpayil-onam/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fef7e6",
   "theme_color": "#8b4e1a",
   "icons": [
     {
-      "src": "https://bgkd123.github.io/perumpayil-onam/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://bgkd123.github.io/perumpayil-onam/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
