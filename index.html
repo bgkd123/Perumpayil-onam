@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>Perumpayil · Meat Centre · Onam</title>
 
-    <link rel="manifest" href="manifest.json?v=15" />
+    <link rel="manifest" href="manifest.json?v=16" />
     <meta name="theme-color" content="#8b4e1a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=15" />
+    <link rel="apple-touch-icon" href="icon-192.png?v=16" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
@@ -20,28 +20,28 @@
            ============================================================ */
         @font-face {
             font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=15') format('opentype');
+            src: url('TarmilesAction.otf?v=16') format('opentype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=15') format('truetype');
+            src: url('MLU-Anakha.ttf?v=16') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=15') format('truetype');
+            src: url('Pacifico.ttf?v=16') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=15') format('truetype');
+            src: url('MLU-Ambili Bold.ttf?v=16') format('truetype');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -57,7 +57,7 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
-            background: url('pattern1.webp?v=15') repeat center center;
+            background: url('pattern1.webp?v=16') repeat center center;
             background-size: 200px 200px;
             transition: background-image 0.8s ease-in-out;
         }
@@ -177,7 +177,7 @@
         }
 
         /* ============================================================
-           SPLASH SCREEN WITH VIDEO - DEFAULT AUDIO ON
+           SPLASH SCREEN WITH VIDEO + FALLBACK
            ============================================================ */
         #splash-screen {
             position: fixed;
@@ -217,6 +217,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            background: #000;
+            position: relative;
+            z-index: 0;
+        }
+        /* Fallback image (if video fails) */
+        #splash-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
             background: #000;
             position: relative;
             z-index: 0;
@@ -314,7 +324,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             
-            background-image: url('bg01.webp?v=15');
+            background-image: url('bg01.webp?v=16');
             background-size: cover;
             background-position: center;
             background-color: rgba(255, 248, 235, 0.2);
@@ -865,15 +875,18 @@
     <div class="butterfly butterfly-6">🦋</div>
 
     <!-- ============================================================
-    SPLASH SCREEN WITH VIDEO - DEFAULT AUDIO ON
+    SPLASH SCREEN WITH VIDEO + FALLBACK IMAGE
     ============================================================ -->
     <div id="splash-screen">
-        <!-- No 'muted' attribute - audio is ON by default -->
+        <!-- Video with fallback -->
         <video id="splashVideo" src="splash_video.mp4" 
                autoplay loop playsinline webkit-playsinline
-               poster="onam26.webp"></video>
+               poster="onam26.webp"
+               onerror="this.style.display='none'; document.getElementById('splashFallback').style.display='block';"></video>
+        <!-- Fallback Image (if video fails) -->
+        <img id="splashFallback" src="onam26.webp" alt="Onam 2026" style="display:none;" />
         
-        <!-- Sound Button - Default: volume-up (unmuted) -->
+        <!-- Sound Button -->
         <button class="splash-sound-btn" id="splashSoundBtn" onclick="toggleSplashSound()">
             <i class="fas fa-volume-up"></i>
         </button>
@@ -882,13 +895,13 @@
     </div>
 
     <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=15" loop preload="auto"></audio>
+    <audio id="bgAudio" src="onambg.mp3?v=16" loop preload="auto"></audio>
 
     <!-- ============================================================
     MAVELI - DEFAULT 250px
     ============================================================ -->
     <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=15" alt="Maveli" class="maveli-float-img" 
+        <img id="maveliImage" src="maveli.png?v=16" alt="Maveli" class="maveli-float-img" 
              onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
         <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
     </div>
@@ -912,7 +925,7 @@
     ============================================================ -->
     <div class="onam-card" id="mainCard">
         <div class="header">
-            <img class="header-logo" src="Logo.png?v=15" alt="Perumpayil Logo" onerror="this.style.display='none';">
+            <img class="header-logo" src="Logo.png?v=16" alt="Perumpayil Logo" onerror="this.style.display='none';">
             <div class="title-group">
                 <div class="brand">PERUMPAYIL</div>
                 <div class="brand-sub">Meat Centre</div>
@@ -997,7 +1010,7 @@
     ============================================================ -->
     <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
         <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=15" 
+            <video id="popupVideo" src="onam_wish.mp4?v=16" 
                    autoplay loop playsinline webkit-playsinline
                    preload="none"
                    onclick="closePopup()">
@@ -1046,7 +1059,7 @@
         function changePattern() {
             const body = document.body;
             const nextPattern = patterns[patternIndex];
-            body.style.backgroundImage = `url('${nextPattern}?v=15')`;
+            body.style.backgroundImage = `url('${nextPattern}?v=16')`;
             body.style.backgroundSize = '200px 200px';
             body.style.backgroundRepeat = 'repeat';
             body.style.backgroundPosition = 'center center';
@@ -1247,7 +1260,7 @@
         // ===== SERVICE WORKER (PWA) =====
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=15')
+                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=16')
                     .then(function(reg) {
                         console.log('✅ Service Worker registered successfully!');
                     })
