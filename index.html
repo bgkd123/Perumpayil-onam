@@ -2,1284 +2,459 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>Perumpayil · Meat Centre · Onam</title>
-
-    <link rel="manifest" href="manifest.json?v=21" />
-    <meta name="theme-color" content="#8b4e1a" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Perumpayil" />
-    <link rel="apple-touch-icon" href="icon-192.png?v=21" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perumpayil · Coming Soon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     
     <style>
-        /* ============================================================
-           FONTS
-           ============================================================ */
-        @font-face {
-            font-family: 'TarmilesAction';
-            src: url('TarmilesAction.otf?v=21') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Anakha';
-            src: url('MLU-Anakha.ttf?v=21') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'CelebrateScript';
-            src: url('Pacifico.ttf?v=21') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'AmbiliBold';
-            src: url('MLU-Ambili Bold.ttf?v=21') format('truetype');
-            font-weight: bold;
-            font-style: normal;
-            font-display: swap;
-        }
-
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Roboto,system-ui,sans-serif; }
-        body {
-            min-height:100vh;
-            padding:16px 12px 40px;
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-            justify-content:center;
-            position:relative;
-            overflow-x:hidden;
-            background: url('pattern1.webp?v=21') repeat center center;
-            background-size: 200px 200px;
-            transition: background-image 0.8s ease-in-out;
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 236, 210, 0.4), rgba(252, 182, 159, 0.3), rgba(168, 224, 99, 0.2));
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* ===== BACKGROUND FLOWER PATTERN ===== */
-        body::before {
-            content: "🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐🌸🌼🌺🌻🌷🌹💐";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            font-size: 3.5rem;
-            letter-spacing: 40px;
-            opacity: 0.04;
-            z-index: 0;
-            pointer-events: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            word-break: break-all;
-            line-height: 5rem;
-        }
-
-        /* ============================================================
-           FLYING FLOWERS
-           ============================================================ */
-        .flying-flower {
-            position: fixed;
-            z-index: 15;
-            pointer-events: none;
-            font-size: 2.5rem;
-            opacity: 0.7;
-            animation: flyFlower 6s ease-in-out infinite;
-        }
-        .flying-flower-1 { left: 5%; top: 10%; animation-delay: 0s; }
-        .flying-flower-2 { right: 5%; top: 20%; animation-delay: 1s; }
-        .flying-flower-3 { left: 8%; bottom: 15%; animation-delay: 2s; }
-        .flying-flower-4 { right: 8%; bottom: 25%; animation-delay: 3s; }
-        .flying-flower-5 { left: 15%; top: 45%; animation-delay: 1.5s; }
-        .flying-flower-6 { right: 15%; top: 55%; animation-delay: 2.5s; }
-
-        @keyframes flyFlower {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(40px, -30px) rotate(15deg) scale(1.1); }
-            50% { transform: translate(-20px, -50px) rotate(-10deg) scale(0.9); }
-            75% { transform: translate(30px, -20px) rotate(8deg) scale(1.05); }
-            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-        }
-
-        /* ============================================================
-           BUTTERFLIES
-           ============================================================ */
-        .butterfly {
-            position: fixed;
-            z-index: 16;
-            pointer-events: none;
-            font-size: 2.2rem;
-            opacity: 0.8;
-            animation: flyButterfly 8s ease-in-out infinite;
-        }
-        .butterfly-1 { left: 2%; top: 25%; animation-delay: 0s; }
-        .butterfly-2 { right: 3%; top: 35%; animation-delay: 2s; }
-        .butterfly-3 { left: 5%; top: 65%; animation-delay: 4s; }
-        .butterfly-4 { right: 5%; top: 70%; animation-delay: 1s; }
-        .butterfly-5 { left: 20%; top: 5%; animation-delay: 3s; }
-        .butterfly-6 { right: 20%; top: 8%; animation-delay: 5s; }
-
-        @keyframes flyButterfly {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            20% { transform: translate(60px, -40px) rotate(20deg) scale(1.2); }
-            40% { transform: translate(-30px, -70px) rotate(-15deg) scale(0.8); }
-            60% { transform: translate(50px, -20px) rotate(10deg) scale(1.1); }
-            80% { transform: translate(-40px, -50px) rotate(-20deg) scale(0.9); }
-            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-        }
-
-        /* ============================================================
-           FALLING FLOWERS
-           ============================================================ */
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            overflow: hidden;
-        }
-        .pellet, .flower-emoji {
-            position: absolute;
-            left: 0;
-            top: -10%;
-            opacity: 0.7;
-            animation: fallDown linear infinite;
-        }
-        .pellet { width: 8px; height: 8px; border-radius: 50%; }
-        .flower-emoji { font-size: 1.6rem; }
-        @keyframes fallDown {
-            0% { top: -10%; opacity: 0.8; transform: rotate(0deg) scale(0.6); }
-            10% { opacity: 1; }
-            100% { top: 110%; opacity: 0.1; transform: rotate(720deg) scale(1.1); }
-        }
-
-        /* ============================================================
-           SPLASH SCREEN
-           ============================================================ */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 99999;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-            opacity: 1;
-            visibility: visible;
+        * {
+            margin: 0;
             padding: 0;
-        }
-        #splash-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        #splash-screen::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.75) 100%);
-            pointer-events: none;
-            z-index: 1;
-        }
-        #splash-screen video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            background: #000;
-            position: relative;
-            z-index: 0;
-        }
-        #splash-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: none;
-            background: #000;
-            position: relative;
-            z-index: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, -apple-system, system-ui, sans-serif;
         }
         
-        .splash-sound-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            font-size: 1.4rem;
+        body {
+            min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 100000;
-            transition: all 0.3s ease;
-        }
-        .splash-sound-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
-        .splash-sound-btn:active { transform: scale(0.9); }
-
-        .splash-continue-btn {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(145deg, #ffd700, #ff8c00);
-            color: #3f2a14;
-            border: none;
-            padding: 16px 48px;
-            border-radius: 60px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            z-index: 100000;
-            opacity: 0;
-            visibility: hidden;
-            animation: fadeInUp 0.6s ease forwards, pulseGlow 2s ease-in-out infinite;
-            animation-delay: 2.2s, 2.8s;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29, #1a1a3e, #24243e);
+            position: relative;
             overflow: hidden;
         }
-        @keyframes pulseGlow {
-            0%, 100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-            50% { transform: translateX(-50%) scale(1.05); box-shadow: 0 0 50px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.3); }
-        }
-        .splash-continue-btn::before {
+        
+        body::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
-            animation: shimmer 3s ease-in-out infinite;
-            transform: rotate(25deg);
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.06) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255, 100, 0, 0.04) 0%, transparent 40%);
+            animation: rotateBg 25s linear infinite;
+            z-index: 0;
         }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) rotate(25deg); }
-            100% { transform: translateX(100%) rotate(25deg); }
+        
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.2); }
         }
-        .splash-continue-btn.show { opacity: 1; visibility: visible; }
-        .splash-continue-btn:hover { transform: translateX(-50%) scale(1.08); box-shadow: 0 0 60px rgba(255, 215, 0, 0.8); }
-        .splash-continue-btn:active { transform: translateX(-50%) scale(0.95); }
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
-            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-
-        /* ============================================================
-           MAIN CARD
-           ============================================================ */
-        .onam-card {
-            max-width:440px; 
-            width:100%; 
-            position:relative; 
-            z-index:20;
-            border-radius:48px 48px 32px 32px;
-            padding:24px 20px 32px; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            
-            background-image: url('bg01.webp?v=21');
-            background-size: cover;
-            background-position: center;
-            background-color: rgba(255, 248, 235, 0.2);
-            background-blend-mode: overlay;
-        }
-
-        /* ============================================================
-           HEADER
-           ============================================================ */
-        .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 8px;
-            gap: 6px;
-        }
-        .header-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #ffd700;
-            box-shadow: 0 4px 30px rgba(255, 215, 0, 0.4);
-            object-fit: cover;
-            background: #fff8ec;
-            flex-shrink: 0;
-        }
-        .title-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .brand {
-            font-family: 'AmbiliBold', 'TarmilesAction', 'Baloo 2', cursive, sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            color: #4a2a0e;
-            line-height: 1.1;
-            text-shadow: 3px 3px 0 rgba(255, 215, 0, 0.4), 0 0 40px rgba(255,215,0,0.1);
-            text-transform: uppercase;
-        }
-        .brand-sub {
-            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #5a3d1e;
-            margin-top: -4px;
-            text-shadow: 1px 1px 0 rgba(255,215,0,0.3);
-            letter-spacing: 1px;
-        }
-        .subhead {
-            font-size: 0.8rem;
-            color: #5a3d1e;
-            background: rgba(255, 255, 255, 0.5);
-            display: inline-block;
-            padding: 0 14px 0 10px;
-            border-radius: 40px;
-            margin-top: 4px;
-            width: fit-content;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(2px);
-        }
-
-        /* ============================================================
-           ONAM TAG - GOLD + SHINE + PULSE
-           ============================================================ */
-        .onam-tag {
-            font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
-            background: linear-gradient(90deg, #D4AF37, #FFF8DC, #D4AF37, #FFF8DC, #D4AF37);
-            background-size: 300% 100%;
-            padding: 12px 10px 10px;
-            border-radius: 100px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            letter-spacing: 0.5px;
-            margin: 14px 0 12px;
-            border: 2px solid #b8860b;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914;
-            color: #1a0e00;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-            animation: shinePulse 3s ease-in-out infinite;
-        }
-        @keyframes shinePulse {
-            0% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
-            50% { background-position: 100% 0%; box-shadow: 0 0 60px rgba(212, 175, 55, 0.7), 0 0 80px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
-            100% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
-        }
-
-        /* ============================================================
-           MAVELI
-           ============================================================ */
-        .maveli-container {
-            position: fixed;
-            right: 20px;
-            bottom: 25%;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
-            animation: walkMaveli 4s ease-in-out infinite;
-        }
-        .maveli-float-img {
-            width: 250px;
-            height: auto;
-            border-radius: 20px;
-            display: block;
-        }
-        .maveli-fallback {
-            font-size: 8rem;
-            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.6));
-            display: none;
-        }
-        @keyframes walkMaveli {
-            0% { transform: translateX(0px) translateY(0px) rotate(0deg); }
-            15% { transform: translateX(-30px) translateY(-8px) rotate(-6deg); }
-            30% { transform: translateX(-50px) translateY(0px) rotate(-3deg); }
-            45% { transform: translateX(-30px) translateY(-5px) rotate(-6deg); }
-            60% { transform: translateX(0px) translateY(0px) rotate(0deg); }
-            75% { transform: translateX(30px) translateY(-8px) rotate(6deg); }
-            90% { transform: translateX(50px) translateY(0px) rotate(3deg); }
-            100% { transform: translateX(30px) translateY(-5px) rotate(6deg); }
-        }
-
-        /* ===== BURST FLOWERS ===== */
-        .burst-flower {
-            position: fixed;
-            pointer-events: none;
-            font-size: 1.6rem;
-            z-index: 99998;
-            animation: burstFlower 1.2s ease-out forwards;
-        }
-        @keyframes burstFlower {
-            0% { transform: translate(0, 0) scale(0.5) rotate(0deg); opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)) scale(1.5) rotate(720deg); opacity: 0; }
-        }
-
-        /* ============================================================
-           SIZE CONTROLLER - MAX 400px, DEFAULT 250px
-           ============================================================ */
-        .size-controller {
-            position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-            z-index:1000;
-            background:rgba(0,0,0,0.6); backdrop-filter:blur(12px);
-            padding:12px 20px; border-radius:60px;
-            display:flex; align-items:center; gap:16px;
-            border:1px solid #ffd700;
-            box-shadow:0 8px 30px rgba(0,0,0,0.3);
-            color:white;
-            font-weight:600;
-            font-size:0.9rem;
-            white-space:nowrap;
-        }
-        .size-controller input[type="range"] {
-            width:140px; height:4px;
-            -webkit-appearance:none; appearance:none;
-            background:linear-gradient(90deg, #ffd700, #ff8c00);
-            border-radius:4px;
-            outline:none;
-            cursor:pointer;
-        }
-        .size-controller input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance:none; appearance:none;
-            width:18px; height:18px;
-            background:#ffd700;
-            border-radius:50%;
-            border:2px solid #fff;
-            box-shadow:0 0 10px rgba(255,215,0,0.5);
-            cursor:pointer;
-        }
-        .size-controller .size-label {
-            min-width:40px;
-            text-align:center;
-            background:rgba(255,255,255,0.15);
-            padding:2px 8px;
-            border-radius:20px;
-            font-size:0.8rem;
-        }
-
-        /* ============================================================
-           MEAT ICONS
-           ============================================================ */
-        .meat-icons {
-            display:flex; 
-            justify-content:center; 
-            gap:30px; 
-            background:rgba(255,255,255,0.3); 
-            backdrop-filter:blur(4px); 
-            border-radius:60px;
-            padding:12px 8px; 
-            margin:8px 0 16px; 
-            border:1px solid rgba(255,215,0,0.2);
-        }
-        .meat-icons span { 
-            font-size:2.2rem; 
-            filter:drop-shadow(0 4px 6px rgba(150,70,0,0.2)); 
-        }
-        .meat-icons .label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #4a2a0e;
-            display: block;
-            text-align: center;
-            letter-spacing: 1px;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        .premium-badge {
-            background: linear-gradient(135deg, #0f3b2c, #1f6e4a);
-            color:#f7efd6; padding:8px 12px; border-radius:40px; display:inline-block;
-            font-weight:600; font-size:0.85rem; letter-spacing:1px; margin-bottom:6px;
-            border:1px solid #ffd700; box-shadow:0 4px 0 #1f5e44;
-        }
-        .premium-badge i { margin-right:6px; color:#f7c56e; }
-
-        /* ============================================================
-           BUTTONS
-           ============================================================ */
-        .install-btn {
-            background: linear-gradient(145deg, #2a6b4a, #0f3b2c);
-            color: #fff;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.0rem;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            cursor: pointer;
-            box-shadow: 0 6px 25px rgba(26, 107, 74, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            max-width: 320px;
-            margin: 8px auto;
-            border: 2px solid #ffd700;
-        }
-        .install-btn:hover { transform: scale(1.02); box-shadow: 0 10px 35px rgba(26, 107, 74, 0.5); }
-        .install-btn:active { transform: translateY(4px) scale(0.98); }
-        .install-btn i { color: #ffd700; font-size: 1.2rem; }
-        .install-btn.hidden { display: none; }
-
-        .wish-btn-open {
-            background: linear-gradient(145deg, #8b4e1a, #5a3010);
-            color: #fcf3e2;
-            border: none;
-            padding: 18px 28px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(139, 78, 26, 0.4), 0 0 30px rgba(255, 215, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            max-width: 320px;
-            margin: 12px auto 6px;
-            border: 2px solid #ffd700;
-            position: relative;
-            overflow: hidden;
-        }
-        .wish-btn-open:hover { transform: scale(1.02); }
-        .wish-btn-open:active { transform: translateY(5px) scale(0.98); }
-        .wish-btn-open i.fa-gift { animation: giftShake 2s ease-in-out infinite; }
-        @keyframes giftShake {
-            0%, 100% { transform: rotate(0deg); }
-            10% { transform: rotate(15deg); }
-            20% { transform: rotate(-10deg); }
-            30% { transform: rotate(5deg); }
-            40%, 100% { transform: rotate(0deg); }
-        }
-
-        .share-btn {
-            background: linear-gradient(145deg, #1a6b4a, #0f3b2c);
-            color: #fff;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 1.0rem;
-            letter-spacing: 1px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            cursor: pointer;
-            box-shadow: 0 6px 25px rgba(26, 107, 74, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            max-width: 320px;
-            margin: 8px auto;
-            border: 2px solid #ffd700;
-        }
-        .share-btn:hover { transform: scale(1.02); }
-        .share-btn:active { transform: translateY(4px) scale(0.98); }
-        .share-btn i { color: #ffd700; font-size: 1.2rem; }
-
-        .toast {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(12px);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            border: 1px solid #ffd700;
-            z-index: 99999;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-        .toast.show { opacity: 1; }
-
-        /* ============================================================
-           INFO GRID
-           ============================================================ */
-        .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
-        .info-item {
-            background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
-            display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
-            box-shadow:0 4px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .info-item:hover { background:rgba(255,255,255,0.4); transform: translateY(-2px); }
-        .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
-        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
-        .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
-        .info-item .action-link {
-            background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
-            font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
-            transition:all 0.3s ease; box-shadow:0 3px 0 #0d412e;
-        }
-        .info-item .action-link:hover { background:#2a8a5a; transform:scale(1.05); }
-        .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
-        .info-item .action-link.whatsapp { background:#1f8b4c; box-shadow:0 3px 0 #0d5e31; }
-        .info-item .action-link.whatsapp:hover { background:#2aa85c; }
-
-        .order-section {
-            background:rgba(255,215,0,0.15); backdrop-filter:blur(4px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
-            margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
-        }
-        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
-        .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
-        .order-btn {
-            background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
-            font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
-            box-shadow:0 6px 0 #0f0a06; transition:all 0.3s ease; cursor:pointer; border:1px solid #ffd700;
-            flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
-        }
-        .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0f0a06; }
-        .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
-        .order-btn.green { background:#1b7a44; box-shadow:0 6px 0 #0f4d2a; }
-        .order-btn.green:hover { background:#229a52; }
-        .order-btn.amber { background:#b8701a; box-shadow:0 6px 0 #7a4a0e; }
-        .order-btn.amber:hover { background:#d4882a; }
-
-        .footer-note {
-            margin-top: 24px;
-            text-align: center;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-note .malayalam {
-            font-family: 'Anakha', 'Segoe UI', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #4a2a0e;
-            display: block;
-            margin-bottom: 4px;
-            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
-        }
-        .footer-note .english {
-            font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
-            font-size: 1.5rem;
-            font-weight: normal;
-            color: #6a3d1e;
-            display: block;
-            text-shadow: 0 2px 20px rgba(255,215,0,0.2);
-            letter-spacing: 1px;
-        }
-
-        /* ============================================================
-           POPUP
-           ============================================================ */
-        .popup-overlay {
-            position: fixed;
+        
+        body::after {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 99999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            animation: curtainDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: top;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
         }
-        .popup-overlay.active { display: flex; }
-        @keyframes curtainDown {
-            0% { transform: scaleY(0); opacity: 0; }
-            100% { transform: scaleY(1); opacity: 1; }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 50%;
+            animation: floatParticle 10s ease-in-out infinite;
+            z-index: 0;
         }
-        .popup-card {
+        
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+            50% { transform: translateY(-120px) scale(2); opacity: 0.6; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 50px 40px;
+            max-width: 650px;
             width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
-            border-radius: 0;
+        }
+        
+        .logo-icon {
+            display: inline-block;
+            font-size: 4.5rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+            animation: pulseIcon 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        .brand {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+        
+        .brand span {
+            color: #ffd700;
+        }
+        
+        .brand-sub {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        .brand-sub .est {
+            color: rgba(255, 215, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 28px;
+            border-radius: 50px;
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            color: #ffd700;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: pulseBadge 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseBadge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .status-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: blinkDot 1.4s ease-in-out infinite;
+        }
+        
+        @keyframes blinkDot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
+        }
+        
+        .message {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .message strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .message-sub {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 35px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 10px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
             overflow: hidden;
         }
-        .popup-card video { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
-            background: #111; 
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ffd700, #ff8c00);
+            border-radius: 4px;
+            animation: progressAnim 3s ease-in-out infinite;
         }
-
-        .popup-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            font-size: 1.8rem;
-            font-weight: 300;
+        
+        @keyframes progressAnim {
+            0% { width: 0%; transform: translateX(-100%); }
+            50% { width: 70%; transform: translateX(0); }
+            100% { width: 0%; transform: translateX(100%); }
+        }
+        
+        .progress-label {
             display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 100000;
-            transition: all 0.3s ease;
+            gap: 30px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
         }
-        .popup-close-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
-        .popup-close-btn:active { transform: scale(0.9); }
-
-        .popup-sound-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            width: 44px;
-            height: 44px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            font-size: 1.4rem;
+        
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            margin: 0 auto 30px;
+        }
+        
+        .btn-group {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            cursor: pointer;
-            z-index: 100000;
-            transition: all 0.3s ease;
+            gap: 12px;
+            margin-top: 5px;
         }
-        .popup-sound-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
-        .popup-sound-btn:active { transform: scale(0.9); }
-
-        .popup-close-hint {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 40px;
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            pointer-events: none;
-            white-space: nowrap;
-            z-index: 100000;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
         }
-        .popup-close-hint i { margin-right: 8px; }
-
-        @media (max-width:420px) {
-            .brand { font-size: 2.2rem; letter-spacing: 2px; }
-            .brand-sub { font-size: 1rem; }
-            .header-logo { width: 80px; height: 80px; }
-            .maveli-float-img { width: 180px; }
-            .maveli-fallback { font-size: 5rem; }
-            .maveli-container { right: 10px; bottom: 20%; }
-            .size-controller { padding: 10px 16px; gap: 10px; bottom: 16px; }
-            .size-controller input[type="range"] { width: 100px; }
-            .popup-sound-btn { top: 12px; left: 12px; width: 38px; height: 38px; font-size: 1.2rem; }
-            .popup-close-btn { top: 12px; right: 12px; width: 38px; height: 38px; font-size: 1.5rem; }
-            .popup-close-hint { font-size: 0.7rem; padding: 6px 14px; bottom: 16px; }
-            .onam-tag { font-size: 1rem; padding: 10px 8px; }
-            .splash-continue-btn { bottom: 40px; padding: 14px 32px; font-size: 1rem; }
-            .splash-sound-btn { top: 12px; left: 12px; width: 38px; height: 38px; font-size: 1.2rem; }
-            .flying-flower { font-size: 1.8rem; }
-            .butterfly { font-size: 1.6rem; }
-            .footer-note .malayalam { font-size: 1rem; }
-            .footer-note .english { font-size: 1.2rem; }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn:active {
+            transform: translateY(0px);
+        }
+        
+        .btn-primary {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+        
+        .btn-primary:hover {
+            background: #ffe44d;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.25);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: #ffffff;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.25);
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #ffffff;
+        }
+        
+        .btn-instagram:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 30px rgba(225, 48, 108, 0.3);
+        }
+        
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+        
+        .btn i {
+            font-size: 1rem;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: rgba(255, 215, 0, 0.4);
+        }
+        
+        .footer span {
+            margin: 0 10px;
+        }
+        
+        .notify {
+            margin: 25px 0 10px;
+        }
+        
+        .notify input {
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            font-size: 0.9rem;
+            width: 240px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .notify input::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .notify input:focus {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+        }
+        
+        .notify .btn {
+            border-radius: 50px;
+            padding: 12px 28px;
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 30px 20px; }
+            .brand { font-size: 2.4rem; letter-spacing: 1px; }
+            .brand-sub { font-size: 0.75rem; letter-spacing: 4px; }
+            .message { font-size: 1.1rem; }
+            .logo-icon { font-size: 3.5rem; }
+            .btn { padding: 10px 20px; font-size: 0.8rem; }
+            .notify input { width: 100%; margin-bottom: 10px; }
+            .notify .btn { width: 100%; justify-content: center; }
+            .progress-label { gap: 15px; font-size: 0.6rem; }
+            .status-badge { font-size: 0.7rem; padding: 8px 18px; }
+        }
+        
+        @media (min-width: 481px) and (max-width: 768px) {
+            .brand { font-size: 2.8rem; }
+            .notify input { width: 200px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- ============================================================
-    FLYING FLOWERS (6)
-    ============================================================ -->
-    <div class="flying-flower flying-flower-1">🌸</div>
-    <div class="flying-flower flying-flower-2">🌺</div>
-    <div class="flying-flower flying-flower-3">🌼</div>
-    <div class="flying-flower flying-flower-4">🌻</div>
-    <div class="flying-flower flying-flower-5">🌷</div>
-    <div class="flying-flower flying-flower-6">💐</div>
-
-    <!-- ============================================================
-    BUTTERFLIES (6)
-    ============================================================ -->
-    <div class="butterfly butterfly-1">🦋</div>
-    <div class="butterfly butterfly-2">🦋</div>
-    <div class="butterfly butterfly-3">🦋</div>
-    <div class="butterfly butterfly-4">🦋</div>
-    <div class="butterfly butterfly-5">🦋</div>
-    <div class="butterfly butterfly-6">🦋</div>
-
-    <!-- ============================================================
-    SPLASH SCREEN
-    ============================================================ -->
-    <div id="splash-screen">
-        <video id="splashVideo" src="splash_video.mp4?v=21" 
-               autoplay loop playsinline webkit-playsinline
-               poster="onam26.webp?v=21"
-               onerror="this.style.display='none'; document.getElementById('splashFallback').style.display='block';"></video>
-        <img id="splashFallback" src="onam26.webp?v=21" alt="Onam 2026" style="display:none;" />
+    
+    <!-- ===== Particles ===== -->
+    <div class="particle" style="top: 10%; left: 8%; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 20%; right: 12%; animation-delay: 1.2s;"></div>
+    <div class="particle" style="bottom: 30%; left: 5%; animation-delay: 2.4s;"></div>
+    <div class="particle" style="bottom: 20%; right: 8%; animation-delay: 3.6s;"></div>
+    <div class="particle" style="top: 55%; left: 45%; animation-delay: 0.8s;"></div>
+    <div class="particle" style="top: 75%; left: 25%; animation-delay: 1.8s;"></div>
+    <div class="particle" style="top: 65%; right: 6%; animation-delay: 2.8s;"></div>
+    <div class="particle" style="top: 5%; left: 55%; animation-delay: 3.2s;"></div>
+    
+    <!-- ===== Main Container ===== -->
+    <div class="container">
         
-        <button class="splash-sound-btn" id="splashSoundBtn" onclick="toggleSplashSound()">
-            <i class="fas fa-volume-up"></i>
-        </button>
+        <!-- Logo -->
+        <div class="logo-icon">🏮</div>
         
-        <button class="splash-continue-btn" onclick="continueApp()">▶ Continue</button>
+        <!-- Brand -->
+        <h1 class="brand">PERUMPAYIL<span>.</span></h1>
+        <div class="brand-sub">
+            Meat Centre · <span class="est">Est. 2024</span>
+        </div>
+        
+        <!-- Status Badge -->
+        <div class="status-badge">
+            <span class="dot"></span>
+            Under Construction
+        </div>
+        
+        <!-- Message -->
+        <p class="message">
+            We're building something <strong>special</strong>
+        </p>
+        <p class="message-sub">
+            Fresh. Quality. Trusted. Coming soon.
+        </p>
+        
+        <!-- Divider -->
+        <div class="divider"></div>
+        
+        <!-- Progress -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <div class="progress-label">
+            <span>✦ Building</span>
+            <span>✦ Perfecting</span>
+            <span>✦ Launching</span>
+        </div>
+        
+        <!-- Notify -->
+        <div class="notify">
+            <input type="email" placeholder="Enter email for updates" />
+            <button class="btn btn-primary" onclick="notifyMe()">
+                <i class="fas fa-bell"></i> Notify Me
+            </button>
+        </div>
+        
+        <!-- Contact Buttons -->
+        <div class="btn-group">
+            <a href="https://wa.me/916282116735" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://www.instagram.com/peru_mpayil" target="_blank" class="btn btn-instagram">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="tel:+919388151050" class="btn btn-outline">
+                <i class="fas fa-phone"></i> Call
+            </a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <a href="#">Home</a>
+            <span>·</span>
+            <a href="#">About</a>
+            <span>·</span>
+            <a href="#">Contact</a>
+            <br />
+            <span style="font-size: 0.65rem;">© 2026 Perumpayil Meat Centre</span>
+        </div>
+        
     </div>
-
-    <!-- ===== AUDIO ===== -->
-    <audio id="bgAudio" src="onambg.mp3?v=21" loop preload="auto"></audio>
-
-    <!-- ============================================================
-    MAVELI
-    ============================================================ -->
-    <div class="maveli-container" id="maveliContainer">
-        <img id="maveliImage" src="maveli.png?v=21" alt="Maveli" class="maveli-float-img" 
-             onerror="this.style.display='none'; document.getElementById('maveliFallback').style.display='block';">
-        <span id="maveliFallback" class="maveli-fallback" style="display:none;">👑🫅</span>
-    </div>
-
-    <!-- ============================================================
-    SIZE CONTROLLER
-    ============================================================ -->
-    <div class="size-controller">
-        <i class="fas fa-arrows-alt-h" style="color:#ffd700;"></i>
-        <span style="font-size:0.8rem;">Size</span>
-        <input type="range" id="sizeSlider" min="30" max="400" value="250" 
-               oninput="updateMaveliSize(this.value)">
-        <span class="size-label" id="sizeDisplay">250</span>
-    </div>
-
-    <!-- ===== FALLING FLOWERS ===== -->
-    <div class="confetti-container" id="confettiBox"></div>
-
-    <!-- ============================================================
-    MAIN CARD
-    ============================================================ -->
-    <div class="onam-card" id="mainCard">
-        <div class="header">
-            <img class="header-logo" src="Logo.png?v=21" alt="Perumpayil Logo" onerror="this.style.display='none';">
-            <div class="title-group">
-                <div class="brand">PERUMPAYIL</div>
-                <div class="brand-sub">Meat Centre</div>
-                <div class="subhead"><i class="fas fa-leaf" style="color:#6f8f4b;"></i> Premium Quality</div>
-            </div>
-        </div>
-
-        <div class="onam-tag">ഐശ്വര്യത്തിന്റെയും സമൃദ്ധിയുടെയും<br>ഒരു നല്ല ഓണം ആശംസിക്കുന്നു!</div>
-
-        <div class="meat-icons">
-            <div><span>🦆</span><span class="label">DUCK</span></div>
-            <div><span>🐷</span><span class="label">PORK</span></div>
-            <div><span>🥩</span><span class="label">FRESH</span></div>
-        </div>
-
-        <div style="text-align:center;">
-            <span class="premium-badge"><i class="fas fa-star"></i> Fresh Always · Farm sourced</span>
-        </div>
-
-        <!-- ===== BUTTONS ===== -->
-        <button class="wish-btn-open" onclick="openPopupWithBurst()">
-            <i class="fas fa-gift"></i> A Gift For You <i class="fas fa-video"></i>
-        </button>
-
-        <button id="installBtn" class="install-btn hidden" onclick="installApp()">
-            <i class="fas fa-download"></i> Install App
-        </button>
-
-        <button class="share-btn" onclick="shareApp()">
-            <i class="fas fa-share-alt"></i> Share
-        </button>
-
-        <div id="toast" class="toast">✅ Link copied!</div>
-
-        <div class="info-grid">
-            <div class="info-item">
-                <i class="fas fa-map-pin"></i>
-                <div class="content">
-                    BOAT JETTY ROAD, CHANGANACHERRY MARKET
-                    <small>📍 Perumpayil, Kerala</small>
-                </div>
-                <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link"><i class="fas fa-directions"></i> Map</a>
-            </div>
-            <div class="info-item">
-                <i class="fab fa-whatsapp" style="color:#1f8b4c;"></i>
-                <div class="content">
-                    +91 6282116735
-                    <small>WhatsApp for orders</small>
-                </div>
-                <a href="https://wa.me/916282116735?text=Onam%20order%20-%20Perumpayil" class="action-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat</a>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <div class="content">
-                    +91 9388151050
-                    <small>Call 8am – 8pm</small>
-                </div>
-                <a href="tel:+919388151050" class="action-link" style="background:#7a5a2e;box-shadow:0 3px 0 #4d371b;"><i class="fas fa-phone"></i> Call</a>
-            </div>
-        </div>
-
-        <div class="order-section">
-            <h3><i class="fas fa-mobile-alt"></i> Order via Mobile</h3>
-            <div class="order-btn-group">
-                <a href="https://wa.me/916282116735?text=Hi%20Perumpayil%2C%20I%20want%20to%20order%20duck%20%26%20pork%20for%20Onam" target="_blank" class="order-btn green"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="tel:+919388151050" class="order-btn amber"><i class="fas fa-phone"></i> Call</a>
-                <a href="#" class="order-btn" style="background:#4d3a22;box-shadow:0 6px 0 #2f1f0e;"><i class="fas fa-shopping-cart"></i> Quick Order</a>
-            </div>
-            <p style="margin-top:12px;font-size:0.8rem;color:#4e351b;text-align:center;background:rgba(255,215,0,0.15);padding:6px;border-radius:40px;backdrop-filter:blur(4px);">
-                <i class="fas fa-truck"></i> Free home delivery · Onam special offers
-            </p>
-        </div>
-
-        <div class="footer-note">
-            <span class="malayalam">🌾 ഓണാശംസകൾ</span>
-            <span class="english">Celebrate Onam with Perumpayil</span>
-        </div>
-    </div>
-
-    <!-- ============================================================
-    VIDEO POPUP
-    ============================================================ -->
-    <div class="popup-overlay" id="popupOverlay" onclick="closePopup()">
-        <div class="popup-card" onclick="closePopup()">
-            <video id="popupVideo" src="onam_wish.mp4?v=21" 
-                   autoplay loop playsinline webkit-playsinline
-                   preload="none"
-                   onclick="closePopup()">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <button class="popup-close-btn" onclick="closePopup(); event.stopPropagation();">✕</button>
-        <button class="popup-sound-btn" id="soundToggleBtn" onclick="toggleSound(); event.stopPropagation();">
-            <i class="fas fa-volume-up"></i>
-        </button>
-        <div class="popup-close-hint">
-            <i class="fas fa-hand-pointer"></i> Tap anywhere to close
-        </div>
-    </div>
-
+    
     <script>
-        // =============================================================
-        // SPLASH VIDEO SOUND TOGGLE
-        // =============================================================
-        function toggleSplashSound() {
-            const video = document.getElementById('splashVideo');
-            const btn = document.getElementById('splashSoundBtn');
-            if (video) {
-                video.muted = !video.muted;
-                const icon = btn.querySelector('i');
-                if (video.muted) {
-                    icon.className = 'fas fa-volume-mute';
-                } else {
-                    icon.className = 'fas fa-volume-up';
-                }
-            }
-        }
-
-        // =============================================================
-        // PATTERN SLIDESHOW
-        // =============================================================
-        const patterns = [
-            'pattern1.webp',
-            'pattern2.webp',
-            'pattern3.webp',
-            'pattern4.webp',
-            'pattern5.webp'
-        ];
-        let patternIndex = 0;
-
-        function changePattern() {
-            const body = document.body;
-            const nextPattern = patterns[patternIndex];
-            body.style.backgroundImage = `url('${nextPattern}?v=21')`;
-            body.style.backgroundSize = '200px 200px';
-            body.style.backgroundRepeat = 'repeat';
-            body.style.backgroundPosition = 'center center';
-            patternIndex = (patternIndex + 1) % patterns.length;
-        }
-
-        function startPatternSlideshow() {
-            changePattern();
-            setInterval(changePattern, 1000);
-        }
-
-        // =============================================================
-        // PWA INSTALL
-        // =============================================================
-        let deferredPrompt;
-        const installBtn = document.getElementById('installBtn');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.classList.remove('hidden');
-            console.log('✅ Install prompt available');
-        });
-
-        window.addEventListener('appinstalled', () => {
-            installBtn.classList.add('hidden');
-            deferredPrompt = null;
-            console.log('✅ App installed successfully');
-            showToast('✅ App installed successfully!');
-        });
-
-        function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('✅ User accepted the install prompt');
-                    } else {
-                        console.log('❌ User dismissed the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
+        function notifyMe() {
+            const email = document.querySelector('.notify input').value;
+            if (email) {
+                alert('✅ Thank you! We\'ll notify you at ' + email);
+                document.querySelector('.notify input').value = '';
             } else {
-                showToast('⚠️ Install not available. Use Chrome menu.');
+                alert('⚠️ Please enter your email address');
             }
         }
-
-        // =============================================================
-        // AUTO INSTALL PROMPT AFTER 2 SECONDS
-        // =============================================================
-        setTimeout(() => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('✅ User accepted the auto install prompt');
-                    } else {
-                        console.log('❌ User dismissed the auto install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            } else {
-                console.log('⏳ Install prompt not ready yet');
-            }
-        }, 2000);
-
-        // =============================================================
-        // BACKGROUND MUSIC
-        // =============================================================
-        const bgAudio = document.getElementById('bgAudio');
-        let bgIsPlaying = false;
-        let audioInitAttempted = false;
-
-        function startBackgroundMusic() {
-            if (audioInitAttempted) return;
-            audioInitAttempted = true;
-            bgAudio.volume = 1;
-            bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => { bgIsPlaying = false; });
-        }
-
-        function pauseBackgroundMusic() {
-            if (bgIsPlaying) { bgAudio.pause(); bgIsPlaying = false; }
-        }
-
-        function resumeBackgroundMusic() {
-            if (!bgIsPlaying && audioInitAttempted) {
-                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
-            }
-        }
-
-        function continueApp() {
-            const splashVideo = document.getElementById('splashVideo');
-            if (splashVideo) { splashVideo.pause(); }
-            
-            startBackgroundMusic();
-            document.getElementById('splash-screen').classList.add('hidden');
-            document.getElementById('mainCard').style.pointerEvents = 'auto';
-            startPatternSlideshow();
-        }
-
-        // =============================================================
-        // SHARE
-        // =============================================================
-        function shareApp() {
-            const url = window.location.href;
-            if (navigator.share) {
-                navigator.share({ title: 'Perumpayil - Onam', text: '🎉 Happy Onam!', url: url }).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(url).then(() => showToast('✅ Link copied!')).catch(() => {
-                    const ta = document.createElement('textarea');
-                    ta.value = url;
-                    document.body.appendChild(ta);
-                    ta.select();
-                    try { document.execCommand('copy'); showToast('✅ Link copied!'); } catch (e) { showToast('⚠️ Copy manually'); }
-                    document.body.removeChild(ta);
-                });
-            }
-        }
-        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
-
-        // =============================================================
-        // BURST FLOWERS
-        // =============================================================
-        function createBurstFlowers() {
-            const emojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            for (let i = 0; i < 12; i++) {
-                const f = document.createElement('div');
-                f.className = 'burst-flower';
-                f.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                const a = Math.random() * 2 * Math.PI, d = 60 + Math.random() * 120;
-                f.style.setProperty('--tx', Math.cos(a) * d + 'px');
-                f.style.setProperty('--ty', Math.sin(a) * d - 80 + 'px');
-                f.style.left = (window.innerWidth / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.top = (window.innerHeight / 2 + Math.random() * 30 - 15) + 'px';
-                f.style.fontSize = (1 + Math.random() * 1) + 'rem';
-                document.body.appendChild(f);
-                setTimeout(() => f.remove(), 1300);
-            }
-        }
-
-        function openPopupWithBurst() {
-            pauseBackgroundMusic();
-            createBurstFlowers();
-            setTimeout(() => openPopup(), 150);
-        }
-
-        function openPopup() {
-            document.getElementById('popupOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-            const v = document.getElementById('popupVideo');
-            if (v) { v.muted = false; v.play().catch(() => {}); }
-        }
-
-        function closePopup() {
-            document.getElementById('popupOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-            const v = document.getElementById('popupVideo');
-            if (v) v.pause();
-            resumeBackgroundMusic();
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
-
-        function toggleSound() {
-            const v = document.getElementById('popupVideo');
-            const btn = document.getElementById('soundToggleBtn');
-            if (v) { v.muted = !v.muted; btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; }
-        }
-
-        // =============================================================
-        // MAVELI SIZE
-        // =============================================================
-        function updateMaveliSize(val) {
-            const img = document.getElementById('maveliImage');
-            const fallback = document.getElementById('maveliFallback');
-            const display = document.getElementById('sizeDisplay');
-            if (img && img.style.display !== 'none') {
-                img.style.width = val + 'px';
-            }
-            if (fallback) {
-                fallback.style.fontSize = (val * 0.35) + 'px';
-            }
-            if (display) {
-                display.textContent = val;
-            }
-        }
-
-        // ===== CONFETTI =====
-        (function() {
-            const container = document.getElementById('confettiBox');
-            const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
-            const flowerEmojis = ['🌸','🌺','🌼','🌻','🌷','💐'];
-            for (let i = 0; i < 30; i++) {
-                const isFlower = Math.random() > 0.4;
-                const el = document.createElement('div');
-                if (isFlower) {
-                    el.className = 'flower-emoji';
-                    el.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                    el.style.fontSize = (1 + Math.random() * 1.2) + 'rem';
-                } else {
-                    el.className = 'pellet';
-                    el.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    const size = 4 + Math.floor(Math.random() * 8);
-                    el.style.width = size + 'px';
-                    el.style.height = size + 'px';
-                    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
-                }
-                el.style.left = Math.random() * 100 + '%';
-                el.style.animationDuration = (12 + Math.random() * 16) + 's';
-                el.style.animationDelay = (Math.random() * 20) + 's';
-                el.style.opacity = 0.4 + Math.random() * 0.4;
-                el.style.transform = `rotate(${Math.random() * 360}deg)`;
-                container.appendChild(el);
-            }
-        })();
-
-        // ===== SERVICE WORKER (PWA) =====
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=21')
-                    .then(function(reg) {
-                        console.log('✅ Service Worker registered successfully!');
-                    })
-                    .catch(function(err) {
-                        console.log('❌ Service Worker registration failed: ', err);
-                    });
-            });
-        }
-
-        // ===== SHOW CONTINUE BUTTON AFTER 2s =====
-        setTimeout(() => {
-            const btn = document.querySelector('.splash-continue-btn');
-            if (btn) { btn.classList.add('show'); btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
-        }, 2000);
     </script>
 </body>
 </html>
