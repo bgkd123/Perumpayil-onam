@@ -57,10 +57,34 @@
             justify-content:center;
             position:relative;
             overflow-x:hidden;
-            background: url('pattern1.webp?v=21') repeat center center;
-            background-size: 200px 200px;
-            transition: background-image 0.8s ease-in-out;
+            background: #1a0e06;
         }
+        
+        /* ============================================================
+           BACKGROUND VIDEO - BOTTOM FIXED, ABOVE CARD
+           ============================================================ */
+        #bgVideoContainer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 30;
+            pointer-events: none;
+            background: transparent;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+        #bgVideoContainer video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+            opacity: 0.3;
+        }
+
         body::after {
             content: '';
             position: fixed;
@@ -68,7 +92,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255, 236, 210, 0.4), rgba(252, 182, 159, 0.3), rgba(168, 224, 99, 0.2));
+            background: linear-gradient(135deg, rgba(255, 236, 210, 0.15), rgba(252, 182, 159, 0.1), rgba(168, 224, 99, 0.08));
             z-index: 0;
             pointer-events: none;
         }
@@ -83,7 +107,7 @@
             height: 100%;
             font-size: 3.5rem;
             letter-spacing: 40px;
-            opacity: 0.04;
+            opacity: 0.03;
             z-index: 0;
             pointer-events: none;
             display: flex;
@@ -100,10 +124,10 @@
            ============================================================ */
         .flying-flower {
             position: fixed;
-            z-index: 15;
+            z-index: 35;
             pointer-events: none;
             font-size: 2.5rem;
-            opacity: 0.7;
+            opacity: 0.6;
             animation: flyFlower 6s ease-in-out infinite;
         }
         .flying-flower-1 { left: 5%; top: 10%; animation-delay: 0s; }
@@ -126,10 +150,10 @@
            ============================================================ */
         .butterfly {
             position: fixed;
-            z-index: 16;
+            z-index: 35;
             pointer-events: none;
             font-size: 2.2rem;
-            opacity: 0.8;
+            opacity: 0.7;
             animation: flyButterfly 8s ease-in-out infinite;
         }
         .butterfly-1 { left: 2%; top: 25%; animation-delay: 0s; }
@@ -227,10 +251,33 @@
             object-fit: contain;
             display: none;
             background: #000;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: 0;
         }
         
+        .splash-loader {
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffd700;
+            font-size: 0.9rem;
+            z-index: 2;
+            opacity: 0.8;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .splash-loader i {
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .splash-sound-btn {
             position: absolute;
             top: 20px;
@@ -313,15 +360,12 @@
             z-index:20;
             border-radius:48px 48px 32px 32px;
             padding:24px 20px 32px; 
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
-            
-            background-image: url('bg01.webp?v=21');
-            background-size: cover;
-            background-position: center;
-            background-color: rgba(255, 248, 235, 0.2);
-            background-blend-mode: overlay;
+            background: rgba(255, 248, 235, 0.12) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         /* ============================================================
@@ -342,7 +386,7 @@
             border: 3px solid #ffd700;
             box-shadow: 0 4px 30px rgba(255, 215, 0, 0.4);
             object-fit: cover;
-            background: #fff8ec;
+            background: rgba(255, 248, 235, 0.8);
             flex-shrink: 0;
         }
         .title-group {
@@ -356,35 +400,35 @@
             font-size: 3rem;
             font-weight: 900;
             letter-spacing: 4px;
-            color: #4a2a0e;
+            color: #f7efe0;
             line-height: 1.1;
-            text-shadow: 3px 3px 0 rgba(255, 215, 0, 0.4), 0 0 40px rgba(255,215,0,0.1);
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3), 0 0 40px rgba(255,215,0,0.15);
             text-transform: uppercase;
         }
         .brand-sub {
             font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
             font-size: 1.2rem;
             font-weight: normal;
-            color: #5a3d1e;
+            color: #f0e0c8;
             margin-top: -4px;
-            text-shadow: 1px 1px 0 rgba(255,215,0,0.3);
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
             letter-spacing: 1px;
         }
         .subhead {
             font-size: 0.8rem;
-            color: #5a3d1e;
-            background: rgba(255, 255, 255, 0.5);
+            color: #f0e0c8;
+            background: rgba(0,0,0,0.3);
             display: inline-block;
             padding: 0 14px 0 10px;
             border-radius: 40px;
             margin-top: 4px;
             width: fit-content;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             backdrop-filter: blur(2px);
         }
 
         /* ============================================================
-           ONAM TAG - GOLD + SHINE + PULSE
+           ONAM TAG
            ============================================================ */
         .onam-tag {
             font-family: 'Anakha', 'Baloo 2', 'Segoe UI', cursive, sans-serif;
@@ -399,15 +443,15 @@
             letter-spacing: 0.5px;
             margin: 14px 0 12px;
             border: 2px solid #b8860b;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2), 0 4px 0 #8b6914;
             color: #1a0e00;
             text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
             animation: shinePulse 3s ease-in-out infinite;
         }
         @keyframes shinePulse {
-            0% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
-            50% { background-position: 100% 0%; box-shadow: 0 0 60px rgba(212, 175, 55, 0.7), 0 0 80px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
-            100% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 4px 0 #8b6914; }
+            0% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 4px 0 #8b6914; }
+            50% { background-position: 100% 0%; box-shadow: 0 0 60px rgba(212, 175, 55, 0.5), 0 0 80px rgba(212, 175, 55, 0.2), 0 4px 0 #8b6914; }
+            100% { background-position: 0% 0%; box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 4px 0 #8b6914; }
         }
 
         /* ============================================================
@@ -417,12 +461,12 @@
             position: fixed;
             right: 20px;
             bottom: 25%;
-            z-index: 999;
+            z-index: 40;
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: none;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
             animation: walkMaveli 4s ease-in-out infinite;
         }
         .maveli-float-img {
@@ -461,32 +505,43 @@
         }
 
         /* ============================================================
-           SIZE CONTROLLER - MAX 400px, DEFAULT 250px
+           SIZE CONTROLLER
            ============================================================ */
         .size-controller {
-            position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-            z-index:1000;
-            background:rgba(0,0,0,0.6); backdrop-filter:blur(12px);
-            padding:12px 20px; border-radius:60px;
-            display:flex; align-items:center; gap:16px;
+            position:fixed; 
+            bottom:20px; 
+            left:50%; 
+            transform:translateX(-50%);
+            z-index:50;
+            background:rgba(0,0,0,0.7); 
+            backdrop-filter:blur(12px);
+            padding:12px 20px; 
+            border-radius:60px;
+            display:flex; 
+            align-items:center; 
+            gap:16px;
             border:1px solid #ffd700;
-            box-shadow:0 8px 30px rgba(0,0,0,0.3);
+            box-shadow:0 8px 30px rgba(0,0,0,0.5);
             color:white;
             font-weight:600;
             font-size:0.9rem;
             white-space:nowrap;
         }
         .size-controller input[type="range"] {
-            width:140px; height:4px;
-            -webkit-appearance:none; appearance:none;
+            width:140px; 
+            height:4px;
+            -webkit-appearance:none; 
+            appearance:none;
             background:linear-gradient(90deg, #ffd700, #ff8c00);
             border-radius:4px;
             outline:none;
             cursor:pointer;
         }
         .size-controller input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance:none; appearance:none;
-            width:18px; height:18px;
+            -webkit-appearance:none; 
+            appearance:none;
+            width:18px; 
+            height:18px;
             background:#ffd700;
             border-radius:50%;
             border:2px solid #fff;
@@ -509,32 +564,40 @@
             display:flex; 
             justify-content:center; 
             gap:30px; 
-            background:rgba(255,255,255,0.3); 
+            background:rgba(0,0,0,0.25); 
             backdrop-filter:blur(4px); 
             border-radius:60px;
             padding:12px 8px; 
             margin:8px 0 16px; 
-            border:1px solid rgba(255,215,0,0.2);
+            border:1px solid rgba(255,215,0,0.15);
         }
         .meat-icons span { 
             font-size:2.2rem; 
-            filter:drop-shadow(0 4px 6px rgba(150,70,0,0.2)); 
+            filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3)); 
         }
         .meat-icons .label {
             font-size: 0.8rem;
             font-weight: 600;
-            color: #4a2a0e;
+            color: #f0e0c8;
             display: block;
             text-align: center;
             letter-spacing: 1px;
             font-family: 'Segoe UI', Arial, sans-serif;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
         }
 
         .premium-badge {
             background: linear-gradient(135deg, #0f3b2c, #1f6e4a);
-            color:#f7efd6; padding:8px 12px; border-radius:40px; display:inline-block;
-            font-weight:600; font-size:0.85rem; letter-spacing:1px; margin-bottom:6px;
-            border:1px solid #ffd700; box-shadow:0 4px 0 #1f5e44;
+            color:#f7efd6; 
+            padding:8px 12px; 
+            border-radius:40px; 
+            display:inline-block;
+            font-weight:600; 
+            font-size:0.85rem; 
+            letter-spacing:1px; 
+            margin-bottom:6px;
+            border:1px solid #ffd700; 
+            box-shadow:0 4px 0 #1f5e44;
         }
         .premium-badge i { margin-right:6px; color:#f7c56e; }
 
@@ -631,7 +694,7 @@
             bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(12px);
             color: #fff;
             padding: 12px 24px;
@@ -651,19 +714,33 @@
            ============================================================ */
         .info-grid { display:flex; flex-direction:column; gap:12px; margin:16px 0 22px; }
         .info-item {
-            background:rgba(255,255,255,0.3); backdrop-filter:blur(4px); padding:12px 16px; border-radius:60px;
-            display:flex; align-items:center; gap:14px; border:1px solid rgba(255,215,0,0.2); 
-            box-shadow:0 4px 15px rgba(0,0,0,0.05);
+            background:rgba(0,0,0,0.3); 
+            backdrop-filter:blur(4px); 
+            padding:12px 16px; 
+            border-radius:60px;
+            display:flex; 
+            align-items:center; 
+            gap:14px; 
+            border:1px solid rgba(255,215,0,0.15); 
+            box-shadow:0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
-        .info-item:hover { background:rgba(255,255,255,0.4); transform: translateY(-2px); }
-        .info-item i { width:28px; font-size:1.3rem; color:#4a2a0e; text-align:center; }
-        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#2d1e0e; word-break:break-word; }
-        .info-item .content small { font-weight:400; color:#6b4d2b; display:block; font-size:0.75rem; }
+        .info-item:hover { background:rgba(255,255,255,0.08); transform: translateY(-2px); }
+        .info-item i { width:28px; font-size:1.3rem; color:#ffd700; text-align:center; }
+        .info-item .content { flex:1; font-size:0.95rem; font-weight:500; color:#f0e0c8; word-break:break-word; }
+        .info-item .content small { font-weight:400; color:#c0b098; display:block; font-size:0.75rem; }
         .info-item .action-link {
-            background:#1b6b4a; color:white; padding:6px 16px; border-radius:40px; text-decoration:none;
-            font-size:0.8rem; font-weight:600; white-space:nowrap; border:1px solid #ffd700;
-            transition:all 0.3s ease; box-shadow:0 3px 0 #0d412e;
+            background:#1b6b4a; 
+            color:white; 
+            padding:6px 16px; 
+            border-radius:40px; 
+            text-decoration:none;
+            font-size:0.8rem; 
+            font-weight:600; 
+            white-space:nowrap; 
+            border:1px solid #ffd700;
+            transition:all 0.3s ease; 
+            box-shadow:0 3px 0 #0d412e;
         }
         .info-item .action-link:hover { background:#2a8a5a; transform:scale(1.05); }
         .info-item .action-link i { color:white; font-size:0.9rem; margin-right:4px; }
@@ -671,16 +748,34 @@
         .info-item .action-link.whatsapp:hover { background:#2aa85c; }
 
         .order-section {
-            background:rgba(255,215,0,0.15); backdrop-filter:blur(4px); border-radius:48px 48px 28px 28px; padding:18px 16px 22px;
-            margin:16px 0 8px; border:1px solid rgba(255,215,0,0.2); 
+            background:rgba(0,0,0,0.25); 
+            backdrop-filter:blur(4px); 
+            border-radius:48px 48px 28px 28px; 
+            padding:18px 16px 22px;
+            margin:16px 0 8px; 
+            border:1px solid rgba(255,215,0,0.15); 
         }
-        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#3f2b13; margin-bottom:12px; justify-content:center; }
+        .order-section h3 { display:flex; align-items:center; gap:10px; font-size:1.3rem; color:#f0e0c8; margin-bottom:12px; justify-content:center; }
         .order-btn-group { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
         .order-btn {
-            background:#2a1c0e; color:#fcf3e2; border:none; padding:14px 24px; border-radius:60px;
-            font-weight:700; font-size:1rem; display:inline-flex; align-items:center; gap:12px;
-            box-shadow:0 6px 0 #0f0a06; transition:all 0.3s ease; cursor:pointer; border:1px solid #ffd700;
-            flex:1 1 auto; justify-content:center; text-decoration:none; color:#fcf3e2;
+            background:#2a1c0e; 
+            color:#fcf3e2; 
+            border:none; 
+            padding:14px 24px; 
+            border-radius:60px;
+            font-weight:700; 
+            font-size:1rem; 
+            display:inline-flex; 
+            align-items:center; 
+            gap:12px;
+            box-shadow:0 6px 0 #0f0a06; 
+            transition:all 0.3s ease; 
+            cursor:pointer; 
+            border:1px solid #ffd700;
+            flex:1 1 auto; 
+            justify-content:center; 
+            text-decoration:none; 
+            color:#fcf3e2;
         }
         .order-btn:hover { transform:translateY(-2px); box-shadow:0 8px 0 #0f0a06; }
         .order-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #0f0a06; }
@@ -700,16 +795,16 @@
             font-family: 'Anakha', 'Segoe UI', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
-            color: #4a2a0e;
+            color: #f0e0c8;
             display: block;
             margin-bottom: 4px;
-            text-shadow: 0 2px 10px rgba(255,215,0,0.2);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .footer-note .english {
             font-family: 'CelebrateScript', 'Pacifico', 'Dancing Script', cursive;
             font-size: 1.5rem;
             font-weight: normal;
-            color: #6a3d1e;
+            color: #ffd700;
             display: block;
             text-shadow: 0 2px 20px rgba(255,215,0,0.2);
             letter-spacing: 1px;
@@ -845,6 +940,16 @@
 <body>
 
     <!-- ============================================================
+    BACKGROUND VIDEO - BOTTOM FIXED, ABOVE CARD
+    ============================================================ -->
+    <div id="bgVideoContainer">
+        <video id="bgVideo" src="webvideo.webm" autoplay loop muted playsinline webkit-playsinline
+               style="width:100%; height:100%; object-fit:contain; background:transparent;">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- ============================================================
     FLYING FLOWERS (6)
     ============================================================ -->
     <div class="flying-flower flying-flower-1">🌸</div>
@@ -865,14 +970,29 @@
     <div class="butterfly butterfly-6">🦋</div>
 
     <!-- ============================================================
-    SPLASH SCREEN
+    SPLASH SCREEN - LOOP + STOP ON CONTINUE
     ============================================================ -->
     <div id="splash-screen">
-        <video id="splashVideo" src="splash_video.webm?v=21" 
-               autoplay loop playsinline webkit-playsinline
+        <video id="splashVideo" 
+               autoplay 
+               muted 
+               loop
+               playsinline 
+               webkit-playsinline
+               preload="auto"
                poster="onam26.webp?v=21"
-               onerror="this.style.display='none'; document.getElementById('splashFallback').style.display='block';"></video>
-        <img id="splashFallback" src="onam26.webp?v=21" alt="Onam 2026" style="display:none;" />
+               style="width:100%; height:100%; object-fit:cover; background:#000;">
+            <source src="splash_video.webm?v=21" type="video/webm">
+            <source src="splash_video.mp4?v=21" type="video/mp4">
+            Your browser does not support video.
+        </video>
+        
+        <img id="splashFallback" src="onam26.webp?v=21" alt="Onam 2026" 
+             style="display:none; width:100%; height:100%; object-fit:contain; background:#000; position:absolute; top:0; left:0; z-index:0;" />
+        
+        <div class="splash-loader" id="splashLoader">
+            <i class="fas fa-spinner"></i> Loading...
+        </div>
         
         <button class="splash-sound-btn" id="splashSoundBtn" onclick="toggleSplashSound()">
             <i class="fas fa-volume-up"></i>
@@ -957,7 +1077,7 @@
                 <a href="https://share.google/DgEPDOg0qYXSBWtg6" target="_blank" class="action-link"><i class="fas fa-directions"></i> Map</a>
             </div>
             <div class="info-item">
-                <i class="fab fa-whatsapp" style="color:#1f8b4c;"></i>
+                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
                 <div class="content">
                     +91 6282116735
                     <small>WhatsApp for orders</small>
@@ -981,7 +1101,7 @@
                 <a href="tel:+919388151050" class="order-btn amber"><i class="fas fa-phone"></i> Call</a>
                 <a href="#" class="order-btn" style="background:#4d3a22;box-shadow:0 6px 0 #2f1f0e;"><i class="fas fa-shopping-cart"></i> Quick Order</a>
             </div>
-            <p style="margin-top:12px;font-size:0.8rem;color:#4e351b;text-align:center;background:rgba(255,215,0,0.15);padding:6px;border-radius:40px;backdrop-filter:blur(4px);">
+            <p style="margin-top:12px;font-size:0.8rem;color:#c0b098;text-align:center;background:rgba(255,215,0,0.08);padding:6px;border-radius:40px;backdrop-filter:blur(4px);">
                 <i class="fas fa-truck"></i> Free home delivery · Onam special offers
             </p>
         </div>
@@ -1015,6 +1135,54 @@
 
     <script>
         // =============================================================
+        // SPLASH VIDEO - LOOP + STOP ON CONTINUE
+        // =============================================================
+
+        const splashVideo = document.getElementById('splashVideo');
+        const splashLoader = document.getElementById('splashLoader');
+        const splashFallback = document.getElementById('splashFallback');
+
+        // ✅ Enable loop
+        if (splashVideo) {
+            splashVideo.loop = true;
+            
+            splashVideo.addEventListener('loadeddata', function() {
+                console.log('✅ Splash video loaded');
+                if (splashLoader) splashLoader.style.display = 'none';
+                if (splashFallback) splashFallback.style.display = 'none';
+                this.play().catch(function(e) {
+                    console.log('⏳ Autoplay waiting for interaction');
+                });
+            });
+
+            splashVideo.addEventListener('playing', function() {
+                console.log('▶️ Splash video playing');
+                if (splashLoader) splashLoader.style.display = 'none';
+            });
+
+            splashVideo.addEventListener('error', function(e) {
+                console.log('❌ Video error:', e);
+                if (splashLoader) {
+                    splashLoader.innerHTML = '<i class="fas fa-exclamation-circle"></i> Tap to play';
+                    splashLoader.style.cursor = 'pointer';
+                    splashLoader.onclick = function() {
+                        splashVideo.play().catch(function() {});
+                    };
+                }
+                if (splashFallback) splashFallback.style.display = 'block';
+            });
+        }
+
+        // Try to play on user interaction
+        function tryPlayVideo() {
+            if (splashVideo && splashVideo.paused) {
+                splashVideo.play().catch(function() {});
+            }
+        }
+        document.addEventListener('click', tryPlayVideo);
+        document.addEventListener('touchstart', tryPlayVideo);
+
+        // =============================================================
         // SPLASH VIDEO SOUND TOGGLE
         // =============================================================
         function toggleSplashSound() {
@@ -1032,30 +1200,54 @@
         }
 
         // =============================================================
-        // PATTERN SLIDESHOW
+        // CONTINUE APP - STOP SPLASH VIDEO PERMANENTLY
         // =============================================================
-        const patterns = [
-            'pattern1.webp',
-            'pattern2.webp',
-            'pattern3.webp',
-            'pattern4.webp',
-            'pattern5.webp'
-        ];
-        let patternIndex = 0;
-
-        function changePattern() {
-            const body = document.body;
-            const nextPattern = patterns[patternIndex];
-            body.style.backgroundImage = `url('${nextPattern}?v=21')`;
-            body.style.backgroundSize = '200px 200px';
-            body.style.backgroundRepeat = 'repeat';
-            body.style.backgroundPosition = 'center center';
-            patternIndex = (patternIndex + 1) % patterns.length;
+        function continueApp() {
+            // ✅ Stop splash video completely
+            if (splashVideo) {
+                splashVideo.pause();
+                splashVideo.currentTime = 0;
+                splashVideo.loop = false;
+                splashVideo.style.display = 'none';
+                splashVideo.muted = true;
+            }
+            
+            // Hide splash screen
+            document.getElementById('splash-screen').classList.add('hidden');
+            document.getElementById('mainCard').style.pointerEvents = 'auto';
+            
+            // Start background music
+            startBackgroundMusic();
+            
+            // Start background video
+            const bgVideo = document.getElementById('bgVideo');
+            if (bgVideo) {
+                bgVideo.play().catch(function() {});
+            }
         }
 
-        function startPatternSlideshow() {
-            changePattern();
-            setInterval(changePattern, 1000);
+        // =============================================================
+        // BACKGROUND MUSIC
+        // =============================================================
+        const bgAudio = document.getElementById('bgAudio');
+        let bgIsPlaying = false;
+        let audioInitAttempted = false;
+
+        function startBackgroundMusic() {
+            if (audioInitAttempted) return;
+            audioInitAttempted = true;
+            bgAudio.volume = 1;
+            bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => { bgIsPlaying = false; });
+        }
+
+        function pauseBackgroundMusic() {
+            if (bgIsPlaying) { bgAudio.pause(); bgIsPlaying = false; }
+        }
+
+        function resumeBackgroundMusic() {
+            if (!bgIsPlaying && audioInitAttempted) {
+                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
+            }
         }
 
         // =============================================================
@@ -1094,9 +1286,6 @@
             }
         }
 
-        // =============================================================
-        // AUTO INSTALL PROMPT AFTER 2 SECONDS
-        // =============================================================
         setTimeout(() => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
@@ -1112,40 +1301,6 @@
                 console.log('⏳ Install prompt not ready yet');
             }
         }, 2000);
-
-        // =============================================================
-        // BACKGROUND MUSIC
-        // =============================================================
-        const bgAudio = document.getElementById('bgAudio');
-        let bgIsPlaying = false;
-        let audioInitAttempted = false;
-
-        function startBackgroundMusic() {
-            if (audioInitAttempted) return;
-            audioInitAttempted = true;
-            bgAudio.volume = 1;
-            bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => { bgIsPlaying = false; });
-        }
-
-        function pauseBackgroundMusic() {
-            if (bgIsPlaying) { bgAudio.pause(); bgIsPlaying = false; }
-        }
-
-        function resumeBackgroundMusic() {
-            if (!bgIsPlaying && audioInitAttempted) {
-                bgAudio.play().then(() => { bgIsPlaying = true; }).catch(() => {});
-            }
-        }
-
-        function continueApp() {
-            const splashVideo = document.getElementById('splashVideo');
-            if (splashVideo) { splashVideo.pause(); }
-            
-            startBackgroundMusic();
-            document.getElementById('splash-screen').classList.add('hidden');
-            document.getElementById('mainCard').style.pointerEvents = 'auto';
-            startPatternSlideshow();
-        }
 
         // =============================================================
         // SHARE
@@ -1165,7 +1320,13 @@
                 });
             }
         }
-        function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 3000); }
+
+        function showToast(msg) { 
+            const t = document.getElementById('toast'); 
+            t.textContent = msg; 
+            t.classList.add('show'); 
+            setTimeout(() => t.classList.remove('show'), 3000); 
+        }
 
         // =============================================================
         // BURST FLOWERS
@@ -1207,12 +1368,16 @@
             if (v) v.pause();
             resumeBackgroundMusic();
         }
+
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
 
         function toggleSound() {
             const v = document.getElementById('popupVideo');
             const btn = document.getElementById('soundToggleBtn');
-            if (v) { v.muted = !v.muted; btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; }
+            if (v) { 
+                v.muted = !v.muted; 
+                btn.querySelector('i').className = v.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up'; 
+            }
         }
 
         // =============================================================
@@ -1233,7 +1398,9 @@
             }
         }
 
-        // ===== CONFETTI =====
+        // =============================================================
+        // CONFETTI
+        // =============================================================
         (function() {
             const container = document.getElementById('confettiBox');
             const colors = ['#ffd700','#ff8c00','#ff4500','#32cd32','#ff1493','#ffea00'];
@@ -1262,7 +1429,9 @@
             }
         })();
 
-        // ===== SERVICE WORKER (PWA) =====
+        // =============================================================
+        // SERVICE WORKER (PWA)
+        // =============================================================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/perumpayil-onam/sw.js?v=21')
@@ -1275,10 +1444,16 @@
             });
         }
 
-        // ===== SHOW CONTINUE BUTTON AFTER 2s =====
+        // =============================================================
+        // SHOW CONTINUE BUTTON AFTER 2s
+        // =============================================================
         setTimeout(() => {
             const btn = document.querySelector('.splash-continue-btn');
-            if (btn) { btn.classList.add('show'); btn.style.opacity = '1'; btn.style.visibility = 'visible'; }
+            if (btn) { 
+                btn.classList.add('show'); 
+                btn.style.opacity = '1'; 
+                btn.style.visibility = 'visible'; 
+            }
         }, 2000);
     </script>
 </body>
